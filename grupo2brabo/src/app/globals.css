@@ -25,6 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.frase-preta {
+  color: black; /* Altere a cor aqui conforme desejado */
+}
 
 @layer utilities {
   .text-balance {
