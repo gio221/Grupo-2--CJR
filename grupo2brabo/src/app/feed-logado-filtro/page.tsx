@@ -85,6 +85,24 @@ export default function Login(): JSX.Element {
         </div>
       </div>
     </div>
+    <div className="mt-4">
+        <table className="table-auto w-full border-t-4  " style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
+          <tbody>
+            <tr>
+              <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Nome</td>
+            </tr>
+            <tr>
+              <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Matéria</td>
+            </tr>
+            <tr>
+              <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Recentes</td>
+            </tr>
+            <tr>
+              <td className="py-2 text-black border border-gray-300"style={{ display: 'flex', justifyContent: 'center' }}>Antigas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
         {/* Adicionando os cartões de todos os professores */}
         <div className="flex justify-center flex-wrap mt-10">

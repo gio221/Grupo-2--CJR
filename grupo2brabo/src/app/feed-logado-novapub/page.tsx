@@ -98,6 +98,57 @@ export default function Login(): JSX.Element {
           ))}
         </div>
       </div>
+      <div className="sm:text-sm rounded-md" style={{
+      position: 'fixed',
+      top: '70px',
+      left: '250px',
+      width: '900px',
+      height: '450px',
+      backgroundColor: '#25D366',
+      zIndex: 9999,
+      padding: '20px', // Adiciona um padding interno para espaçamento
+    }}>
+      {/* Botão para Nome do Professor */}
+      <button className="sm:text-sm rounded-md"
+        style={{
+          fontSize: '18px',
+          width: '800px',
+          height: '45px',
+          position: 'absolute',
+          top: '10px',
+          left: '40px',
+          backgroundColor: '#FFFFFF',
+          border: 'none', // Remove a borda
+          textAlign: 'left', // Alinha o texto à esquerda
+          color: '#808080', // Define a cor do texto como cinza
+          paddingLeft: '10px', // Adiciona um espaçamento interno à esquerda
+        }}
+      >
+        Nome do Professor
+      </button>
+
+      {/* Botão para Disciplina */}
+      <button className="sm:text-sm rounded-md"
+        style={{
+          fontSize: '18px',
+          width: '800px',
+          height: '45px',
+          position: 'absolute',
+          top: '80px',
+          left: '40px',
+          backgroundColor: '#FFFFFF',
+          border: 'none', // Remove a borda
+          textAlign: 'left', // Alinha o texto à esquerda
+          color: '#808080', // Define a cor do texto como cinza
+          paddingLeft: '10px', // Adiciona um espaçamento interno à esquerda
+        }}
+      >
+        Disciplina
+      </button>
+
+      {/* Espaço em branco grande vazio */}
+      <div style={{marginTop: '120px', height: '300px', background:'#7FFFD4',top: '900px',}}></div>
+    </div>
     </div>
   );
 }

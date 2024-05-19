@@ -36,9 +36,9 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-      <div style={{ width: '1359px', height: '99px', backgroundColor: '#A4FED3' }}>
+      <div style={{ width: '100%', height: '100%', backgroundColor: '#A4FED3' }}>
         <img className="py-1 px-1" src="caminho_para_a_logo_unb.png" alt="Logo UNB" style={{ width: '99px', height: '66px', marginLeft: '30px' }} />
-        <input className="sm:text-sm rounded-md" type="button" value="Login" style={{ width: '150px', height: '55px', position: 'absolute', top: '12px', left: '1133px', background: '#87CEEB' }} />
+        <input className="sm:text-sm rounded-md" type="button" value="Login" style={{ width: '150px', height: '55px', position: 'absolute', top: '12px', left: '80%', background: '#87CEEB' }} />
       </div>
       <div className="bg-[#EDEDED]" style={{ width: '1359px', height: 'auto', paddingBottom: '10px' }}>
         <div className="flex items-center justify-center h-20">

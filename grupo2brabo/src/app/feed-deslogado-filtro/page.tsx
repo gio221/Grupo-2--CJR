@@ -64,33 +64,37 @@ export default function Login(): JSX.Element {
           ))}
         </div>
 
-        <div>
-      <div className="border-t-4 border-black mt-10" style={{ width: '1159px', margin: '0 auto' }}>
+        <div style={{ width: '1159px', margin: '0 auto' }}>
+      <div className="border-t-4 border-black mt-10">
         <div className="flex items-center">
           <h1 className="frase-preta text-[30px]">Todos os professores</h1>
-          <input className="sm:text-sm rounded-md" type="button" value="Ordenar" style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }} />
+          <input
+            className="sm:text-sm rounded-md"
+            type="button"
+            value="Ordenar"
+            style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
+          />
         </div>
       </div>
-      <div className="mt-4" style={{ width: '1159px', margin: '0 auto' }}>
-        <table className="w-full bg-navyblue divide-y divide-white divide-solid">
+      <div className="mt-4">
+        <table className="table-auto w-full border-t-4  " style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
           <tbody>
             <tr>
-              <td className="py-2 text-white">Nome</td>
+              <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Nome</td>
             </tr>
             <tr>
-              <td className="py-2 text-white">Matéria</td>
+              <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Matéria</td>
             </tr>
             <tr>
-              <td className="py-2 text-white">Recentes</td>
+              <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Recentes</td>
             </tr>
             <tr>
-              <td className="py-2 text-white">Antigas</td>
+              <td className="py-2 text-black border border-gray-300"style={{ display: 'flex', justifyContent: 'center' }}>Antigas</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
 
         {/* Adicionando os cartões de todos os professores */}
         <div className="flex justify-center flex-wrap mt-10">
