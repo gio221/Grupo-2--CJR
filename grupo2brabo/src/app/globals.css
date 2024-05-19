@@ -33,4 +33,11 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .btn-brightness {
+    transition: filter 0.3s ease
+  }
+  .btn-brightness:hover {
+    filter: brightness(75%)
+  }
 }
+
