@@ -15,13 +15,14 @@ export default function perfildoalunodeslogado(): JSX.Element {
                 <button className="h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg">Login</button>
             </div>
             
-            <div className="flex justify center">
-            <img src="Seta.svg"/>
-                <div className="w-1/2 h-screen"></div>
-                    <div className="w-full">
-                        <div className="bg-[#3EEE9A] h-40"></div>
-                        <div className="bg-[#FFFFFF] h-40 w-full"></div>
-                    </div>
+            <div className="flex justify-center w-full"> 
+             {/*<img src="Seta.svg"/>*/}
+            <div className="basis-1/3">                           
+                        <div className="bg-[#3EEE9A] h-40">Olá</div>
+                        <div className="bg-[#FFFFFF] h-40"></div> 
+            </div>                        
+                        
+                        
             </div>
         </div>
     );
