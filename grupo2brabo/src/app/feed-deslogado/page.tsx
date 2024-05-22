@@ -1,4 +1,4 @@
-"use client";  // Adicione esta linha no início do arquivo
+"use client";  
 
 import React, { useState } from "react";
 
@@ -44,14 +44,14 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-      <div style={{ width: '1359px', height: '99px', backgroundColor: '#A4FED3' }}>
-        <img className="py-1 px-1" src="caminho_para_a_logo_unb.png" alt="Logo UNB" style={{ width: '99px', height: '66px', marginLeft: '30px' }} />
-        <input className="sm:text-sm rounded-md" type="button" value="Login" style={{ width: '150px', height: '55px', position: 'absolute', top: '12px', left: '1133px', background: '#87CEEB' }} />
-      </div>
-      <div className="bg-[#EDEDED]" style={{ width: '1359px', height: 'auto', paddingBottom: '10px' }}>
+       <div className="w-screen h-24 bg-[#A4FED3] flex items-center justify-between pr-4 pl-4">
+                <img src="caminho_para_a_logo_unb.png" className="h-16" alt="Logo" />
+                <button className="h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">Login</button> 
+            </div>
+      <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
         <div className="flex items-center justify-center h-20">
           <div className="w-1/2">
-            <h1 className="frase-preta text-[30px] relative left-[150px]">Novos professores</h1>
+            <h1 className="frase-preta text-[30px] relative left-[35%]">Novos professores</h1>
           </div>
           <div className="w-1/2 flex">
             <div className="m-auto">

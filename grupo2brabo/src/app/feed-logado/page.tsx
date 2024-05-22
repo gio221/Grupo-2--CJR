@@ -49,16 +49,16 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-      <div style={{ width: '1359px', height: '99px', backgroundColor: '#A4FED3' }}>
+      <div style={{ width: '100%', height: '99px', backgroundColor: '#A4FED3' }}>
         <img className="py-1 px-1" src="caminho_para_a_logo_unb.png" alt="Logo UNB" style={{ width: '99px', height: '66px', marginLeft: '30px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '1100px', position: 'absolute', top: '12px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '1200px', position: 'absolute', top: '12px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '1250px', position: 'absolute', top: '12px' }} />
+        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
+        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
+        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} />
       </div>
-      <div className="bg-[#EDEDED]" style={{ width: '1359px', height: 'auto', paddingBottom: '10px' }}>
+      <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
         <div className="flex items-center justify-center h-20">
           <div className="w-1/2">
-            <h1 className="frase-preta text-[30px] relative left-[150px]">Novos professores</h1>
+          <h1 className="frase-preta text-[30px] relative left-[35%]">Novos professores</h1>
           </div>
           <div className="w-1/2 flex">
             <div className="m-auto">
@@ -139,8 +139,8 @@ export default function Login(): JSX.Element {
           position: 'fixed',
           top: '70px',
           left: '250px',
-          width: '900px',
-          height: '450px',
+          width: '75%',
+          height: '65%',
           backgroundColor: '#3EEE9A',
           zIndex: 9999,
           padding: '20px',
@@ -149,7 +149,7 @@ export default function Login(): JSX.Element {
           <button className="sm:text-sm rounded-md"
             style={{
               fontSize: '18px',
-              width: '800px',
+              width: '95%',
               height: '45px',
               position: 'absolute',
               top: '10px',
@@ -160,15 +160,16 @@ export default function Login(): JSX.Element {
               color: '#808080',
               paddingLeft: '10px',
             }}
-          >
+          >  
             Nome do Professor
+            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '95%', position: 'absolute', top: '4px' }} />
           </button>
 
           {/* Botão para Disciplina */}
           <button className="sm:text-sm rounded-md"
             style={{
               fontSize: '18px',
-              width: '800px',
+              width: '95%',
               height: '45px',
               position: 'absolute',
               top: '80px',
@@ -181,20 +182,28 @@ export default function Login(): JSX.Element {
             }}
           >
             Disciplina
+            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '95%', position: 'absolute', top: '1px' }} />
           </button>
            {/* Espaço em branco grande vazio */}
-           <div className="sm:text-sm rounded-md"style={{ marginTop: '120px', height: '200px', background: '#A4FED3' }}></div>
-          <div><input
+           <div className="sm:text-sm rounded-md"style={{ marginTop: '120px', height: '65%', background: '#A4FED3' }}>   <img className="py-1 px-1" src="logos.png" alt="Notificação" style={{ width: '275px', height: '55px', marginLeft: '0%', top: '1px' }} /></div>
+         
+           <div style={{ display: 'flex', alignItems: 'center' }}>
+         
+    <input
                 className="sm:text-sm rounded-md"
                 type="button"
                 value="Cancelar"
-                onClick={toggleGreenScreen}
-                style={{ width: '150px', height: '55px', background: '#3EEE9A',marginLeft: '600px',  paddingLeft: '30px',border: 'none',
-                textAlign: 'left', marginTop: '20px'}}
+                style={{ width: '40%', background: '#3EEE9A' , marginLeft:'75%',marginTop: '25px',}}
               />
-       <input className="sm:text-sm rounded-md" type="button"value="Avaliar" onClick={toggleGreenScreen} style={{ width: '150px', height: '45px', background: '#A4FED3',marginLeft: '700px',  paddingLeft: '50px',textAlign: 'left',marginTop: '-50px', 
-        }}/>
-        </div>
+               <input
+                className="sm:text-sm rounded-md"
+                type="button"
+                value="Avaliar"
+                style={{ width: '40%', height: '55px', background: '#A4FED3', marginLeft: 'auto', marginTop: '25px',}}
+              />
+</div>
+
+
         </div>
       )}
     </div>
