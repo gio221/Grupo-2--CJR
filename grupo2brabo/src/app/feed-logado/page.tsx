@@ -137,10 +137,10 @@ export default function Login(): JSX.Element {
       {showGreenScreen && (
         <div className="sm:text-sm rounded-md" style={{
           position: 'fixed',
-          top: '70px',
+          top: '50px',
           left: '250px',
           width: '75%',
-          height: '65%',
+          height: '90%',
           backgroundColor: '#3EEE9A',
           zIndex: 9999,
           padding: '20px',
@@ -162,7 +162,7 @@ export default function Login(): JSX.Element {
             }}
           >  
             Nome do Professor
-            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '95%', position: 'absolute', top: '4px' }} />
+            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '4px' }} />
           </button>
 
           {/* Botão para Disciplina */}
@@ -182,10 +182,10 @@ export default function Login(): JSX.Element {
             }}
           >
             Disciplina
-            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '95%', position: 'absolute', top: '1px' }} />
+            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '2px' }} />
           </button>
            {/* Espaço em branco grande vazio */}
-           <div className="sm:text-sm rounded-md"style={{ marginTop: '120px', height: '65%', background: '#A4FED3' }}>   <img className="py-1 px-1" src="logos.png" alt="Notificação" style={{ width: '275px', height: '55px', marginLeft: '0%', top: '1px' }} /></div>
+           <div className="sm:text-sm rounded-md"style={{ marginTop: '120px', height: '65%', background: '#A4FED3' }}>   <img className="py-1 px-1" src="logos.png" alt="Notificação" style={{ width: '20%', height: '15%', marginLeft: '0%', top: '1px' }} /></div>
          
            <div style={{ display: 'flex', alignItems: 'center' }}>
          
