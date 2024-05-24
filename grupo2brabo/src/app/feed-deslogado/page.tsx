@@ -1,6 +1,9 @@
-"use client";  
+/*"use client";  
 
 import React, { useState } from "react";
+import Nav from './src/components/Nav';
+
+
 
 // Definindo a interface para as props do componente ProfessorCard
 interface ProfessorCardProps {
@@ -44,10 +47,9 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-       <div className="w-screen h-24 bg-[#A4FED3] flex items-center justify-between pr-4 pl-4">
-                <img src="caminho_para_a_logo_unb.png" className="h-16" alt="Logo" />
-                <button className="h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">Login</button> 
-            </div>
+         <div>
+      <Nav/> {/*inclui o componente nav}
+    </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
         <div className="flex items-center justify-center h-20">
           <div className="w-1/2">
@@ -60,7 +62,7 @@ export default function Login(): JSX.Element {
           </div>
         </div>
 
-        {/* Adicionando os cartões de novos professores */}
+        {/* Adicionando os cartões de novos professores /}
         <div className="flex justify-center flex-wrap">
           {novosProfessores.map((professor, index) => (
             <ProfessorCard
@@ -76,7 +78,7 @@ export default function Login(): JSX.Element {
           <div className="border-t-4 border-black mt-10">
             <div className="flex items-center">
               <h1 className="frase-preta text-[30px]">Todos os professores</h1>
-              <input
+              <input 
                 className="sm:text-sm rounded-md"
                 type="button"
                 value="Ordenar"
@@ -86,28 +88,38 @@ export default function Login(): JSX.Element {
             </div>
           </div>
           {showOptions && (
-            <div className="mt-4">
-              <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
-                <tbody>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Nome</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Matéria</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Recentes</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Antigas</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+           <div className="mt-4">
+           <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
+             <tbody>
+               <tr>
+                 <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                  {/*coloquei a tag button para que a lista se torne clicável*}
+                   <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Nome</button>
+                 </td>
+               </tr>
+               <tr>
+                 <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                   <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Matéria</button>
+                 </td>
+               </tr>
+               <tr>
+                 <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                   <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Recentes</button>
+                 </td>
+               </tr>
+               <tr>
+                 <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                   <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Antigas</button>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+         
           )}
         </div>
 
-        {/* Adicionando os cartões de todos os professores */}
+        {/* Adicionando os cartões de todos os professores *}
         <div className="flex justify-center flex-wrap mt-10">
           {todosProfessores.map((professor, index) => (
             <ProfessorCard
@@ -121,4 +133,4 @@ export default function Login(): JSX.Element {
       </div>
     </div>
   );
-}
+}*/

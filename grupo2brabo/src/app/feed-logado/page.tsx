@@ -62,7 +62,7 @@ export default function Login(): JSX.Element {
           </div>
           <div className="w-1/2 flex">
             <div className="m-auto">
-              <input className="mr-10 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-540 focus:border-indigo-550 sm:text-sm rounded-md" placeholder="Buscar Professor(a)" />
+              <input className="mr-10 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-540 focus:border-indigo-550 sm:text-sm rounded-md " placeholder="Buscar Professor(a)" />
             </div>
           </div>
         </div>
@@ -100,24 +100,33 @@ export default function Login(): JSX.Element {
             </div>
           </div> 
           {showOptions && (
-            <div className="mt-4">
-              <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
-                <tbody>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Nome</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Matéria</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Recentes</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Antigas</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+             <div className="mt-4">
+             <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
+               <tbody>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                    {/*coloquei a tag button para que a lista se torne clicável*/}
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Nome</button>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Matéria</button>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Recentes</button>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Antigas</button>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
           )}
         </div>
 
