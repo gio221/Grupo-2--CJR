@@ -1,18 +1,17 @@
-/*"use client";  
+"use client";  
 
 import React, { useState } from "react";
-import Nav from './src/components/Nav';
+import Nav from "@/components/Nav";
 
 
 
-// Definindo a interface para as props do componente ProfessorCard
 interface ProfessorCardProps {
   name: string;
   subject: string;
   imageUrl: string;
 }
 
-// Componente ProfessorCard que exibe um avatar com nome e disciplina
+
 const ProfessorCard: React.FC<ProfessorCardProps> = ({ name, subject, imageUrl }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '50px', width: '236px', height: '281px', backgroundColor: '#FFFFFF', border: '1px solid #000', padding: '10px' }}>
@@ -48,7 +47,7 @@ export default function Login(): JSX.Element {
   return (
     <div>
          <div>
-      <Nav/> {/*inclui o componente nav}
+      <Nav/> 
     </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
         <div className="flex items-center justify-center h-20">
@@ -62,7 +61,7 @@ export default function Login(): JSX.Element {
           </div>
         </div>
 
-        {/* Adicionando os cartões de novos professores /}
+   
         <div className="flex justify-center flex-wrap">
           {novosProfessores.map((professor, index) => (
             <ProfessorCard
@@ -93,7 +92,7 @@ export default function Login(): JSX.Element {
              <tbody>
                <tr>
                  <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
-                  {/*coloquei a tag button para que a lista se torne clicável*}
+               
                    <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Nome</button>
                  </td>
                </tr>
@@ -119,7 +118,7 @@ export default function Login(): JSX.Element {
           )}
         </div>
 
-        {/* Adicionando os cartões de todos os professores *}
+       
         <div className="flex justify-center flex-wrap mt-10">
           {todosProfessores.map((professor, index) => (
             <ProfessorCard
@@ -133,4 +132,4 @@ export default function Login(): JSX.Element {
       </div>
     </div>
   );
-}*/
+}
