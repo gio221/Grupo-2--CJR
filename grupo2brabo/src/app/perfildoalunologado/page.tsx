@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "../components/Nav";
 
 interface Post {
     date: string;
@@ -40,13 +41,13 @@ const user: User = {
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
-            {/* navbar */}
-            <div style={{ width: '100%', height: '99px', backgroundColor: '#A4FED3', position: 'relative' }}>
-                <img className="py-1 px-1" src="caminho_para_a_logo_unb.png" alt="Logo UNB" style={{ width: '99px', height: '66px', marginLeft: '25px' }} />
-                <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '50px', height: '50px', position: 'absolute', top: '12px', right: '20px' }} />
-                <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '50px', height: '50px', position: 'absolute', top: '12px', right: '80px' }} />
-                <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '50px', height: '50px', position: 'absolute', top: '12px', right: '130px' }} />
-            </div>
+            {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
+       <div className="relative">
+        <Nav />
+        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
+        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
+        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} />
+      </div>
 
             {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">

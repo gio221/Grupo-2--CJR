@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Nav from "@/app/components/Nav"
 
 // Definindo a interface para as props do componente ProfessorCard
 interface ProfessorCardProps {
@@ -49,8 +50,9 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-      <div style={{ width: '100%', height: '99px', backgroundColor: '#A4FED3' }}>
-        <img className="py-1 px-1" src="caminho_para_a_logo_unb.png" alt="Logo UNB" style={{ width: '99px', height: '66px', marginLeft: '30px' }} />
+       {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
+       <div className="relative">
+        <Nav />
         <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
         <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
         <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} />

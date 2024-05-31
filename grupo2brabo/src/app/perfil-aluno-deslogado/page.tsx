@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "../components/Nav";
 
 interface Post {
     date: string;
@@ -40,11 +41,13 @@ const user: User = {
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
-            {/* navbar */}
-            <div className="w-screen h-24 bg-[#A4FED3] flex items-center justify-between pr-4 pl-4">
-                <img src="caminho_para_a_logo_unb.png" className="h-16" alt="Logo" />
-                <button className="h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">Login</button> {/*hover:bg para efeito de passar o mouse */}
-            </div>
+             {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
+      <div className="relative">
+        <Nav />
+        <a href="/login"><button  className="absolute top-0 right-0 m-4 h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">
+          Login
+        </button></a>
+      </div>
 
             {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">
