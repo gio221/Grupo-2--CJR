@@ -58,31 +58,7 @@ export default function Login(): JSX.Element {
         <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} />
       </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
-        <div className="flex items-center justify-center h-20">
-          <div className="w-1/2">
-          <h1 className="frase-preta text-[30px] relative left-[35%]">Novos professores</h1>
-          </div>
-          <div className="w-1/2 flex">
-            <div className="m-auto">
-              <input className="mr-10 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-540 focus:border-indigo-550 sm:text-sm rounded-md " placeholder="Buscar Professor(a)" />
-            </div>
-          </div>
-        </div>
-
-        {/* Adicionando os cartões de novos professores */}
-        <div className="flex justify-center flex-wrap">
-          {novosProfessores.map((professor, index) => (
-            <ProfessorCard
-              key={index}
-              name={professor.name}
-              subject={professor.subject}
-              imageUrl={professor.imageUrl}
-            />
-          ))}
-        </div>
-
-        <div style={{ width: '1159px', margin: '0 auto' }}>
-          <div className="border-t-4 border-black mt-12">
+      <div style={{ width: '1159px', margin: '0 auto' }}>
             <div className="flex items-center">
               <h1 className="frase-preta text-[30px]">Todos os professores</h1>
               <input
@@ -100,7 +76,7 @@ export default function Login(): JSX.Element {
                 onClick={handleButtonClick}
               />
             </div>
-          </div> 
+        
           {showOptions && (
              <div className="mt-4">
              <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
@@ -132,6 +108,20 @@ export default function Login(): JSX.Element {
           )}
         </div>
 
+
+        {/* Adicionando os cartões de novos professores */}
+        <div className="flex justify-center flex-wrap">
+          {novosProfessores.map((professor, index) => (
+            <ProfessorCard
+              key={index}
+              name={professor.name}
+              subject={professor.subject}
+              imageUrl={professor.imageUrl}
+            />
+          ))}
+        </div>
+
+        
 
         {/* Adicionando os cartões de todos os professores */}
         <div className="flex justify-center flex-wrap mt-10">
