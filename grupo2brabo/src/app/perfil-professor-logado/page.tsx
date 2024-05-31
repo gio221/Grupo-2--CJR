@@ -21,7 +21,7 @@ interface User {
 // infos do professor
 const user: User = { 
     name: "Morty Gamer",
-    course: "Dept. Ciência da Computação",
+    course: " Dept. Ciência da Computação",
     materia: "Segurança Computacional, Estrutura de Dados, Viagem Interdimensional", 
     avatar: "avatar-professor.png",
     posts: [
@@ -30,14 +30,14 @@ const user: User = {
             category: "Rick. Viagem Interdimensional",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
             comments: 5,
-            avatar: "avatar.png"
+            avatar:"avatar.png"
         },
         {
             date: "10/04/2024, às 11:12",
             category: "Rick - Estrutura de Dados",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin",
             comments: 3,
-            avatar: "avatar.png"
+            avatar: "avatar-bart.png"
         },
     ],
 };
@@ -95,12 +95,12 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             {user.posts.map((post, index) => (
                                 <div key={index} className="bg-[#3EEE9A] p-4 rounded-lg">
                                     <div className="flex items-center">
-                                        <img src={user.avatar} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" />
-                                        <div className="ml-2">
+                                     <img src={post.avatar} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" />
+                                         <div className="ml-2">
                                             <h4 className="text-lg font-bold text-black">{user.name}</h4>
-                                            <p className="text-sm text-gray-800">{post.date} · <span className="text-black-600 font-semibold">{post.category}</span></p>
+                                                 <p className="text-sm text-gray-800 ">{post.date} · <span className="text-black-600 font-semibold">{post.category}</span></p>
                                         </div>
-                                    </div>
+                                </div>
                                     <p className="mt-4 text-gray-900">{post.content}</p>
                                     <div className="mt-2 flex items-center">
                                         <img

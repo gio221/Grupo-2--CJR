@@ -36,7 +36,7 @@ const user: User = {
             category: "Rick - Estrutura de Dados",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin",
             comments: 3,
-            avatar: "avatar.png"
+            avatar: "avatar-bart.png"
         },
     ],
 };
@@ -84,27 +84,25 @@ export default function PerfilDoProfessorDeslogado(): JSX.Element {
 
                     <div className="p-4">
                         <div className="space-y-4">
-                            {user.posts.map((post, index) => (
-                                <div key={index} className="bg-[#3EEE9A] p-4 rounded-lg">
-                                    <div className="flex items-center">
-                                        <img src={user.avatar} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" />
-                                        <div className="ml-2">
+                        {user.posts.map((post, index) => (
+                            <div key={index} className="bg-[#3EEE9A] p-4 rounded-lg">
+                                <div className="flex items-center">
+                                     <img src={post.avatar} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" />
+                                         <div className="ml-2">
                                             <h4 className="text-lg font-bold text-black">{user.name}</h4>
-                                            <p className="text-sm text-gray-800 ">{post.date} · <span className="text-black-600 font-semibold">{post.category}</span></p>
+                                                 <p className="text-sm text-gray-800 ">{post.date} · <span className="text-black-600 font-semibold">{post.category}</span></p>
                                         </div>
-                                    </div>
-                                    <p className="mt-4 text-gray-900">{post.content}</p>
-                                    <div className="mt-2 flex items-center">
-                                        <img
-                                            className="py-1 px-1"
-                                            src="https://s3-alpha-sig.figma.com/img/1b65/efaf/4d4043a919b34c9b4f05a7c437b9c7a5?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RAFmSkSgCTZOB8euznMV7mhreQeu32AnTm6Vl2yrAYRgatRUpgIsiio89wjH-O5srN2pADKxz7VDK~IlwJ4P~VKEEJCfeGxLmhLNP4Gfxj~AkAU8Ssu5UIe9vKlJ2Igb4E5OoWvhUO~OQUg8AgNdXwYbhvxBSli6mvJ7nrzjU2kX5O-xYqCKymBqF~nYVpNX1I2d0aJv4YVmF7dsUk6jRQ3w~sGHq7ovDyWsHtAOUXvOSC-2JeAD33BFuS~b7VpB7WdrnLnbVITxpxBIxac0vOIb3w6Q1ciupxng7XI1MWzG8XnPfBxA7Kf5ou724eM-6RflLnXw~hX3cPWTiCnVVw__"
-                                            alt="Notificação"
-                                            style={{ width: '35px', height: '35px', marginLeft: '-15px', top: '6px' }}
-                                        />
-                                        <p className="text-sm text-gray-600 font-bold ml-2">{post.comments} comentários</p>
-                                    </div>
                                 </div>
-                            ))}
+                                <p className="mt-4 text-gray-900">{post.content}</p>
+                            <div className="mt-2 flex items-center">
+                            <img className="py-1 px-1"
+                                src="https://s3-alpha-sig.figma.com/img/1b65/efaf/4d4043a919b34c9b4f05a7c437b9c7a5?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RAFmSkSgCTZOB8euznMV7mhreQeu32AnTm6Vl2yrAYRgatRUpgIsiio89wjH-O5srN2pADKxz7VDK~IlwJ4P~VKEEJCfeGxLmhLNP4Gfxj~AkAU8Ssu5UIe9vKlJ2Igb4E5OoWvhUO~OQUg8AgNdXwYbhvxBSli6mvJ7nrzjU2kX5O-xYqCKymBqF~nYVpNX1I2d0aJv4YVmF7dsUk6jRQ3w~sGHq7ovDyWsHtAOUXvOSC-2JeAD33BFuS~b7VpB7WdrnLnbVITxpxBIxac0vOIb3w6Q1ciupxng7XI1MWzG8XnPfBxA7Kf5ou724eM-6RflLnXw~hX3cPWTiCnVVw__"
+                                alt="Notificação"
+                                style={{ width: '35px', height: '35px', marginLeft: '-15px', top: '6px' }}/>
+                                <p className="text-sm text-gray-600 font-bold ml-2">{post.comments} comentários</p>
+                            </div>
+                            </div>
+                        ))}
                         </div>
                     </div>
                 </div>
