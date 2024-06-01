@@ -33,7 +33,7 @@ const user: User = {
             date: "15/04/2024, às 21:42",
             category: "Rick - Viagem Interdimensional",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-            comments: 5,
+            comments: 3,
         },
     ],
 };
