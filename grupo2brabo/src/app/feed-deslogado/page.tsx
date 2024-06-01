@@ -54,39 +54,22 @@ export default function Login(): JSX.Element {
         </button></a>
       </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
-        <div className="flex items-center justify-center h-20">
-          <div className="w-1/2">
-            <h1 className="frase-preta text-[30px] relative left-[35%]">Novos professores</h1>
-          </div>
-          {/* Barra de buscar professor, com letras pretas */}
-          <div className="w-1/2 flex">
-          <div className="m-auto">
-            <input className="mr-10 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black"
-              placeholder="Buscar Professor(a)"/>
-          </div>
-          </div>
-        </div>
-       <div className="flex justify-center flex-wrap">
-          {novosProfessores.map((professor, index) => (
-            <ProfessorCard
-              key={index}
-              name={professor.name}
-              subject={professor.subject}
-              imageUrl={professor.imageUrl}/>
-          ))}
-       </div>
-       <div style={{ width: '1159px', margin: '0 auto' }}>
+
         <div className="border-t-4 border-black mt-10">
-          <div className="flex items-center">
-            <h1 className="frase-preta text-[30px]">Todos os professores</h1>
-           {/*  Botão de Ordenar  */}
-            <input 
-              className="sm:text-sm rounded-md"
-              type="button"
-              value="Ordenar"
-              style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
-              onClick={handleButtonClick}/>
-          </div>
+        <div className="flex items-center">
+              <h1 className="frase-preta text-[30px]" style={{ marginTop: '40px' }}>Todos os professores</h1>
+               <div className="m-auto">
+              <input className="mr-2 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black" 
+                placeholder="Buscar Professor(a)"/>
+            </div>
+            <input
+                className="sm:text-sm rounded-md"
+                type="button"
+                value="Ordenar"
+                style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
+                onClick={handleButtonClick}
+              />
+    
         </div>
         {showOptions && (
         <div className="mt-4">
@@ -115,6 +98,19 @@ export default function Login(): JSX.Element {
           </tbody>
           </table>
         </div>)}
+        </div>
+       <div className="flex justify-center flex-wrap">
+          {novosProfessores.map((professor, index) => (
+            <ProfessorCard
+              key={index}
+              name={professor.name}
+              subject={professor.subject}
+              imageUrl={professor.imageUrl}/>
+          ))}
+       </div>
+       <div style={{ width: '1159px', margin: '0 auto' }}>
+        
+       
        </div>
        <div className="flex justify-center flex-wrap mt-10">
           {todosProfessores.map((professor, index) => (
