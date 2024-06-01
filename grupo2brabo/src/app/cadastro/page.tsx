@@ -17,7 +17,7 @@ export default function cadastro(): JSX.Element {
                  </div><br></br>
 
                  <div className="w-[32rem] border-2 h-12 rounded-xl flex items-center justify-center bg-[#FFFFFF] drop-shadow-sm">
-                     <input className="w-[30rem] outline-none text-black" type="password" placeholder="Senha"></input>
+                     <input className="w-[30rem] outline-none text-black" type="password" placeholder="Senha"   ></input>
                  </div><br></br>
 
                  <div className="w-[32rem] border-2 h-12 rounded-xl flex items-center justify-center bg-[#FFFFFF] drop-shadow-sm">
