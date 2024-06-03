@@ -23,6 +23,28 @@ const ProfessorCard: React.FC<ProfessorCardProps> = ({ name, subject, imageUrl }
 
 // Componente principal
 export default function Login(): JSX.Element {
+  const [showModal, setShowModal] = useState(false);
+  const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
+
+  // Função para lidar com a abertura do modal
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Função para lidar com o fechamento do modal
+  const closeModal = () => {
+    setShowModal(false);
+    // Limpar o texto quando o modal é fechado
+    setText("");
+  };
+
+  // Função para lidar com a submissão do texto
+  const handleSubmit = () => {
+    // Aqui você pode fazer algo com o texto digitado pelo usuário, como enviar para o backend
+    console.log("Texto submetido:", text);
+    // Fechar o modal após a submissão
+    closeModal();
+  };
   const [showOptions, setShowOptions] = useState(false);
 
   const handleButtonClick = () => {
@@ -50,14 +72,41 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-       {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
-       <div className="relative">
-        <Nav />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
-        <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
+    {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
+    <div className="relative">
+      <Nav />
+      {/* Botão da logo */}
+      <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
+      <button onClick={openModal}>
+        <img
+          className="py-1 px-1"
+          src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d"
+          alt="Logo usuario"
+          style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }}
+        />
+      </button>
+      <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Sair" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
         </a>
-      </div>
+    </div>
+    {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded-lg">
+            {/* Campo de entrada para o nome e o curso */}
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Digite seu nome "
+              className="border border-gray-400 mb-4 p-2 rounded-md"
+            />
+            {/* Botões de submissão e cancelamento */}
+            <div className="flex justify-center"> 
+              <button onClick={closeModal} className="mr-2 px-4 py-2 bg-gray-200 rounded-md justify-content: center">Salvar</button> 
+            </div>
+
+          </div>
+        </div>
+      )}
      {/*  A parte de cima do codigo, com os botões */}
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto' }}>
       <div style={{ width: '1159px', margin: '0 auto' }}>
