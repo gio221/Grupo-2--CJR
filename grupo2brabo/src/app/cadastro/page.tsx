@@ -1,7 +1,11 @@
 "use client";
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+
 
 export default function Cadastro(): JSX.Element {
+    const router = useRouter()
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
@@ -28,10 +32,11 @@ export default function Cadastro(): JSX.Element {
             return;
         } else {
             setErrorSenha('');
+            //axios.post('http://localhost:3003/user', aquiVocêPassaOsBagulhos)
+            router.push('/login')
         }
 
         // Redirecionar para a tela de login
-        window.location.href = '/login';
     };
 
     return (
@@ -60,9 +65,8 @@ export default function Cadastro(): JSX.Element {
                  </div><br></br>
                 </form><br></br>
                 <div className="text-black w-[32rem] h-24 flex justify-evenly items-center">
-                    <a href="/login">
-                        <button className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness" onClick={handleCreateAccount}>Criar Conta</button>
-                    </a>
+                <button className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness" onClick={handleCreateAccount}>Criar Conta</button>
+
                   
                 </div>
                 {/* Exibir mensagem de erro se houver */}
