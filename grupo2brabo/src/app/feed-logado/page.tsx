@@ -58,6 +58,7 @@ export default function Login(): JSX.Element {
         <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
         </a>
       </div>
+     {/*  A parte de cima do codigo, com os botões */}
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto' }}>
       <div style={{ width: '1159px', margin: '0 auto' }}>
             <div className="flex items-center">
@@ -81,7 +82,7 @@ export default function Login(): JSX.Element {
               />
     
             </div>
-        
+        {/* Botões que ficam abaixo da ordenar */}
           {showOptions && (
              <div className="mt-4">
              <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
@@ -140,76 +141,71 @@ export default function Login(): JSX.Element {
           ))}
         </div>
       </div>
+      {/* Botão de nova publicação */}
       {showGreenScreen && (
-        <div className="sm:text-sm rounded-md" style={{
-          position: 'fixed',
-          top: '50px',
-          left: '250px',
-          width: '75%',
-          height: '90%',
-          backgroundColor: '#3EEE9A',
-          zIndex: 9999,
-          padding: '20px',
-        }}>
-          {/* Botão para Nome do Professor */}
-          <button className="sm:text-sm rounded-md"
-            style={{
-              fontSize: '18px',
-              width: '95%',
-              height: '45px',
-              position: 'absolute',
-              top: '10px',
-              left: '40px',
-              backgroundColor: '#FFFFFF',
-              border: 'none',
-              textAlign: 'left',
-              color: '#808080',
-              paddingLeft: '10px',
-            }}
-          >  
-            Nome do Professor
-            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '4px' }} />
-          </button>
-
-          {/* Botão para Disciplina */}
-          <button className="sm:text-sm rounded-md"
-            style={{
-              fontSize: '18px',
-              width: '95%',
-              height: '45px',
-              position: 'absolute',
-              top: '80px',
-              left: '40px',
-              backgroundColor: '#FFFFFF',
-              border: 'none',
-              textAlign: 'left',
-              color: '#808080',
-              paddingLeft: '10px',
-            }}
-          >
-            Disciplina
-            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '2px' }} />
-          </button>
-           {/* Espaço em branco grande vazio */}
-           <div className="sm:text-sm rounded-md"style={{ marginTop: '120px', height: '65%', background: '#A4FED3' }}>   <img className="py-1 px-1" src="logos.png" alt="Notificação" style={{ width: '20%', height: '15%', marginLeft: '0%', top: '1px' }} /></div>
-         
-           <div style={{ display: 'flex', alignItems: 'center' }}>
-         
+      <div className="sm:text-sm rounded-md" style={{
+        position: 'fixed',
+        top: '50px',
+        left: '250px',
+        width: '75%',
+        height: '90%',
+        backgroundColor: '#3EEE9A',
+        zIndex: 9999,
+        padding: '20px',
+      }}>
+      {/* Campo de entrada para Nome do Professor */}
+     <input
+       className="sm:text-sm rounded-md"
+       type="text"
+       placeholder="Nome do Professor"
+       style={{
+        fontSize: '18px',
+        width: '95%',
+        height: '45px',
+        marginTop: '10px',
+        backgroundColor: '#FFFFFF',
+        border: 'none',
+        paddingLeft: '10px',
+      }}
+    />
+    {/* Campo de entrada para Disciplina */}
     <input
-                className="sm:text-sm rounded-md"
-                type="button"
-                value="Cancelar"
-                style={{ width: '40%', background: '#3EEE9A' , marginLeft:'75%',marginTop: '25px',}}
-              />
-               <input
-                className="sm:text-sm rounded-md"
-                type="button"
-                value="Avaliar"
-                style={{ width: '40%', height: '55px', background: '#A4FED3', marginLeft: 'auto', marginTop: '25px',}}
-              />
-</div>
-
-
+      className="sm:text-sm rounded-md"
+      type="text"
+      placeholder="Disciplina"
+      style={{
+        fontSize: '18px',
+        width: '95%',
+        height: '45px',
+        marginTop: '10px',
+        backgroundColor: '#FFFFFF',
+        border: 'none',
+        paddingLeft: '10px',
+      }}
+    />
+{/* Coloquei textarea para que a parte de baixo o usuario consiga digitar */}
+<textarea
+  className="sm:text-sm rounded-md"
+  style={{ marginTop: '20px', height: '65%', background: '#A4FED3' ,width:'98%'}}
+  placeholder="Escreva algo aqui..."
+></textarea>
+  {/* botões debaixo da tela de escrever */}
+    <div style={{ alignItems: 'center' }}>
+      <a href="/feed-logado">
+      <input
+        className="sm:text-sm rounded-md"
+        type="button"
+        value="Cancelar"
+        style={{ width: '20%', background: '#3EEE9A', marginLeft: '55%', marginTop: '25px', height: '55px' }}
+      /></a>
+      <a href="/feed-logado">
+      <input
+        className="sm:text-sm rounded-md"
+        type="button"
+        value="Avaliar"
+        style={{ width: '20%', height: '55px', background: '#A4FED3', marginLeft: 'auto', marginTop: '25px' }}
+      /></a>
+    </div>
         </div>
       )}
     </div>

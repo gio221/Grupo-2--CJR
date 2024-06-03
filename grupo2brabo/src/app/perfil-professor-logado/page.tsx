@@ -57,7 +57,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
             {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">
                 <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
-                    <img className="py-1 px-1" src="https://s3-alpha-sig.figma.com/img/41d2/9b03/1f1304be9e1316052b37d56ea083de64?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Vk73cX7gn3-9byD2wbFMkVh9V51DWRt3vtxMcHv8-PnY-jQBH3aDeqSYaGmMOHhgeLNKJxGvdyckJ9mTv0JulzYjQzsnidCjDBRt12xY9Y-kWd~QAUADR48jKCO27pekwwwg7U~Zf1NQF8hV~C~jYqahvK4HDhCLnimKqp4y2L64rRtq0WqtdX7~ozoImcSBdOK1BF1MYC7axRq8Aol3YnNJTFvfg0eeNM1RIHAUXfXIB4srNfZdmwE2YnSlOtK6MaDZ4NDKvvXbQ4OsACGpgyhb~7Sy2OjrDMIyeEu0KPU6hlimYI9KQFG~qLftsjVklKjf0pAK-skXhg7POb9T5g__" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
+                    <img className="py-1 px-1" src="/setamaior.png" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
                     
                     {/* perfil do usuario */}
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
@@ -70,7 +70,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                     <img
                                         className="py-1 px-1"
                                         src="https://static.thenounproject.com/png/620322-200.png"
-                                        alt="Notificação"
+                                        alt="livro"
                                         style={{ width: '39px', height: '39px', marginRight: '12px' }}
                                     />
                                     <p className="text-lg text-black">{user.materia}</p>
@@ -106,8 +106,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                     <div className="mt-2 flex items-center">
                                         <img
                                             className="py-1 px-1"
-                                            src="https://s3-alpha-sig.figma.com/img/1b65/efaf/4d4043a919b34c9b4f05a7c437b9c7a5?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RAFmSkSgCTZOB8euznMV7mhreQeu32AnTm6Vl2yrAYRgatRUpgIsiio89wjH-O5srN2pADKxz7VDK~IlwJ4P~VKEEJCfeGxLmhLNP4Gfxj~AkAU8Ssu5UIe9vKlJ2Igb4E5OoWvhUO~OQUg8AgNdXwYbhvxBSli6mvJ7nrzjU2kX5O-xYqCKymBqF~nYVpNX1I2d0aJv4YVmF7dsUk6jRQ3w~sGHq7ovDyWsHtAOUXvOSC-2JeAD33BFuS~b7VpB7WdrnLnbVITxpxBIxac0vOIb3w6Q1ciupxng7XI1MWzG8XnPfBxA7Kf5ou724eM-6RflLnXw~hX3cPWTiCnVVw__"
-                                            alt="Notificação"
+                                            src="/cometario.png"
                                             style={{ width: '36px', height: '36px', marginLeft: '-15px', top: '6px' }}
                                         />
                                         <p className="text-sm text-gray-600 font-bold ml-2">{post.comments} comentários</p>
