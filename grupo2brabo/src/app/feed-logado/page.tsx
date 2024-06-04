@@ -76,7 +76,7 @@ export default function Login(): JSX.Element {
     <div className="relative">
       <Nav />
       {/* Botão da logo */}
-      <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
+      
       <button onClick={openModal}>
         <img
           className="py-1 px-1"
