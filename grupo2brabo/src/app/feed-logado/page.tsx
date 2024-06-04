@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Nav from "@/app/components/Nav"
 
 // Definindo a interface para as props do componente ProfessorCard
 interface ProfessorCardProps {
@@ -22,6 +23,28 @@ const ProfessorCard: React.FC<ProfessorCardProps> = ({ name, subject, imageUrl }
 
 // Componente principal
 export default function Login(): JSX.Element {
+  const [showModal, setShowModal] = useState(false);
+  const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
+
+  // Função para lidar com a abertura do modal
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Função para lidar com o fechamento do modal
+  const closeModal = () => {
+    setShowModal(false);
+    // Limpar o texto quando o modal é fechado
+    setText("");
+  };
+
+  // Função para lidar com a submissão do texto
+  const handleSubmit = () => {
+    // Aqui você pode fazer algo com o texto digitado pelo usuário, como enviar para o backend
+    console.log("Texto submetido:", text);
+    // Fechar o modal após a submissão
+    closeModal();
+  };
   const [showOptions, setShowOptions] = useState(false);
 
   const handleButtonClick = () => {
@@ -49,23 +72,169 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-      <div style={{ width: '100%', height: '99px', backgroundColor: '#A4FED3' }}>
-        <img className="py-1 px-1" src="caminho_para_a_logo_unb.png" alt="Logo UNB" style={{ width: '99px', height: '66px', marginLeft: '30px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} />
+    {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
+    <div className="relative">
+      <Nav />
+      {/* Botão da logo */}
+      <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
+      <button onClick={openModal}>
+        <img
+          className="py-1 px-1"
+          src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d"
+          alt="Logo usuario"
+          style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }}
+        />
+      </button>
+      <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Sair" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
+        </a>
+    </div>
+    {showModal && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+    <div className="bg-white p-16 rounded-lg flex flex-col justify-center items-center ">
+      {/* Campo de entrada para o nome */}
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Nome"
+        className="border border-gray-400 mb-4 p-2 rounded-md text-black"
+      />
+      
+      {/* Campo de entrada para o email */}
+      <div className="mb-2 w-full">
+        <label htmlFor="email" className="block mb-1 btnSpacing">Email:</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Email"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
       </div>
-      <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
-        <div className="flex items-center justify-center h-20">
-          <div className="w-1/2">
-          <h1 className="frase-preta text-[30px] relative left-[35%]">Novos professores</h1>
-          </div>
-          <div className="w-1/2 flex">
-            <div className="m-auto">
-              <input className="mr-10 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-540 focus:border-indigo-550 sm:text-sm rounded-md" placeholder="Buscar Professor(a)" />
+      
+      {/* Campo de entrada para o curso */}
+      <div className="mb-2 w-full">
+        <label htmlFor="curso" className="block mb-1 btnSpacing">Curso:</label>
+        <input
+          type="text"
+          id="curso"
+          placeholder="Curso"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Campo de entrada para o departamento */}
+      <div className="mb-2 w-full">
+        <label htmlFor="departamento" className="block mb-1 btnSpacing">Departamento:</label>
+        <input
+          type="text"
+          id="departamento"
+          placeholder="Departamento"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Campos para Senha */}
+      <div className="mb-2 w-full">
+        <label htmlFor="senhaAtual" className="block mb-1 btnSpacing">Senha Atual:</label>
+        <input
+          type="password"
+          id="senhaAtual"
+          placeholder="Senha atual"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      <div className="mb-2 w-full ">
+        <label htmlFor="novaSenha" className="block mb-1 btnSpacing">Nova Senha:</label>
+        <input
+          type="password"
+          id="novaSenha"
+          placeholder="Nova senha"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      <div className="mb-2 w-full ">
+        <label htmlFor="confirmNovaSenha" className="block mb-1 btnSpacing">Confirma Nova Senha:</label>
+        <input
+          type="password"
+          id="confirmNovaSenha"
+          placeholder="Confirme sua nova senha"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Botão de submissão */}
+      <div className="flex justify-center w-full">
+      <div className="mr-2">
+        <button onClick={closeModal} className="px-4 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+          Salvar
+        </button>
+      </div>
+      {/* Botão de cancelar edição de cancelar edição */}
+      <div className="mr-2">
+        <button onClick={closeModal} className="px-5 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+          Cancelar
+        </button>
+      </div>
+      </div>
+    </div>
+  </div>
+)}
+     {/*  A parte de cima do codigo, com os botões */}
+      <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto' }}>
+      <div style={{ width: '1159px', margin: '0 auto' }}>
+            <div className="flex items-center">
+              <h1 className="frase-preta text-[30px]" style={{ marginTop: '40px' }}>Todos os professores</h1>
+              <input
+                className="sm:text-sm rounded-md"
+                type="button"
+                value="Nova Publicação"
+                onClick={toggleGreenScreen}
+                style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
+              /> <div className="m-auto">
+              <input className="mr-2 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black" 
+                placeholder="Buscar Professor(a)"/>
             </div>
-          </div>
+               <input
+                className="sm:text-sm rounded-md"
+                type="button"
+                value="Ordenar"
+                style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
+                onClick={handleButtonClick}
+              />
+    
+            </div>
+        {/* Botões que ficam abaixo da ordenar */}
+          {showOptions && (
+             <div className="mt-4">
+             <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
+               <tbody>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                    {/*coloquei a tag button para que a lista se torne clicável*/}
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Nome</button>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Matéria</button>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Recentes</button>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                     <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Antigas</button>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+          )}
         </div>
+
 
         {/* Adicionando os cartões de novos professores */}
         <div className="flex justify-center flex-wrap">
@@ -79,48 +248,7 @@ export default function Login(): JSX.Element {
           ))}
         </div>
 
-        <div style={{ width: '1159px', margin: '0 auto' }}>
-          <div className="border-t-4 border-black mt-12">
-            <div className="flex items-center">
-              <h1 className="frase-preta text-[30px]">Todos os professores</h1>
-              <input
-                className="sm:text-sm rounded-md"
-                type="button"
-                value="Nova Publicação"
-                onClick={toggleGreenScreen}
-                style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
-              />
-               <input
-                className="sm:text-sm rounded-md"
-                type="button"
-                value="Ordenar"
-                style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
-                onClick={handleButtonClick}
-              />
-            </div>
-          </div> 
-          {showOptions && (
-            <div className="mt-4">
-              <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
-                <tbody>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Nome</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Matéria</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Recentes</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Antigas</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-
+        
 
         {/* Adicionando os cartões de todos os professores */}
         <div className="flex justify-center flex-wrap mt-10">
@@ -134,76 +262,71 @@ export default function Login(): JSX.Element {
           ))}
         </div>
       </div>
+      {/* Botão de nova publicação */}
       {showGreenScreen && (
-        <div className="sm:text-sm rounded-md" style={{
-          position: 'fixed',
-          top: '50px',
-          left: '250px',
-          width: '75%',
-          height: '90%',
-          backgroundColor: '#3EEE9A',
-          zIndex: 9999,
-          padding: '20px',
-        }}>
-          {/* Botão para Nome do Professor */}
-          <button className="sm:text-sm rounded-md"
-            style={{
-              fontSize: '18px',
-              width: '95%',
-              height: '45px',
-              position: 'absolute',
-              top: '10px',
-              left: '40px',
-              backgroundColor: '#FFFFFF',
-              border: 'none',
-              textAlign: 'left',
-              color: '#808080',
-              paddingLeft: '10px',
-            }}
-          >  
-            Nome do Professor
-            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '4px' }} />
-          </button>
-
-          {/* Botão para Disciplina */}
-          <button className="sm:text-sm rounded-md"
-            style={{
-              fontSize: '18px',
-              width: '95%',
-              height: '45px',
-              position: 'absolute',
-              top: '80px',
-              left: '40px',
-              backgroundColor: '#FFFFFF',
-              border: 'none',
-              textAlign: 'left',
-              color: '#808080',
-              paddingLeft: '10px',
-            }}
-          >
-            Disciplina
-            <img className="py-1 px-1" src="seta.png" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '2px' }} />
-          </button>
-           {/* Espaço em branco grande vazio */}
-           <div className="sm:text-sm rounded-md"style={{ marginTop: '120px', height: '65%', background: '#A4FED3' }}>   <img className="py-1 px-1" src="logos.png" alt="Notificação" style={{ width: '20%', height: '15%', marginLeft: '0%', top: '1px' }} /></div>
-         
-           <div style={{ display: 'flex', alignItems: 'center' }}>
-         
+      <div className="sm:text-sm rounded-md" style={{
+        position: 'fixed',
+        top: '50px',
+        left: '250px',
+        width: '75%',
+        height: '90%',
+        backgroundColor: '#3EEE9A',
+        zIndex: 9999,
+        padding: '20px',
+      }}>
+      {/* Campo de entrada para Nome do Professor */}
+     <input
+       className="sm:text-sm rounded-md text-black"
+       type="text"
+       placeholder="Nome do Professor"
+       style={{
+        fontSize: '18px',
+        width: '95%',
+        height: '45px',
+        marginTop: '10px',
+        backgroundColor: '#FFFFFF',
+        border: 'none',
+        paddingLeft: '10px',
+      }}
+    />
+    {/* Campo de entrada para Disciplina */}
     <input
-                className="sm:text-sm rounded-md"
-                type="button"
-                value="Cancelar"
-                style={{ width: '40%', background: '#3EEE9A' , marginLeft:'75%',marginTop: '25px',}}
-              />
-               <input
-                className="sm:text-sm rounded-md"
-                type="button"
-                value="Avaliar"
-                style={{ width: '40%', height: '55px', background: '#A4FED3', marginLeft: 'auto', marginTop: '25px',}}
-              />
-</div>
-
-
+      className="sm:text-sm rounded-md text-black"
+      type="text"
+      placeholder="Disciplina"
+      style={{
+        fontSize: '18px',
+        width: '95%',
+        height: '45px',
+        marginTop: '10px',
+        backgroundColor: '#FFFFFF',
+        border: 'none',
+        paddingLeft: '10px',
+      }}
+    />
+{/* Coloquei textarea para que a parte de baixo o usuario consiga digitar */}
+<textarea
+  className="sm:text-sm rounded-md text-black"
+  style={{ marginTop: '20px', height: '65%', background: '#A4FED3' ,width:'98%'}}
+  placeholder="Escreva algo aqui..."
+></textarea>
+  {/* botões debaixo da tela de escrever */}
+    <div style={{ alignItems: 'center' }}>
+      <a href="/feed-logado">
+      <input
+        className="sm:text-sm rounded-md"
+        type="button"
+        value="Cancelar"
+        style={{ width: '20%', background: '#3EEE9A', marginLeft: '55%', marginTop: '25px', height: '55px' }}
+      /></a>
+      <a href="/feed-logado">
+      <input
+        className="sm:text-sm rounded-md"
+        type="button"
+        value="Avaliar"
+        style={{ width: '20%', height: '55px', background: '#A4FED3', marginLeft: 'auto', marginTop: '25px' }}
+      /></a>
+    </div>
         </div>
       )}
     </div>

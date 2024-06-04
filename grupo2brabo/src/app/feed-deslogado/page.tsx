@@ -1,15 +1,17 @@
 "use client";  
 
 import React, { useState } from "react";
+import Nav from "@/app/components/Nav";
 
-// Definindo a interface para as props do componente ProfessorCard
+
+/* Interface dos professores */
 interface ProfessorCardProps {
   name: string;
   subject: string;
   imageUrl: string;
 }
 
-// Componente ProfessorCard que exibe um avatar com nome e disciplina
+
 const ProfessorCard: React.FC<ProfessorCardProps> = ({ name, subject, imageUrl }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '50px', width: '236px', height: '281px', backgroundColor: '#FFFFFF', border: '1px solid #000', padding: '10px' }}>
@@ -44,80 +46,81 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-       <div className="w-screen h-24 bg-[#A4FED3] flex items-center justify-between pr-4 pl-4">
-                <img src="caminho_para_a_logo_unb.png" className="h-16" alt="Logo" />
-                <button className="h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">Login</button> 
-            </div>
+      {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
+      <div className="relative">
+        <Nav />
+        <a href="/login"><button  className="absolute top-0 right-0 m-4 h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">
+          Login
+        </button></a>
+      </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
-        <div className="flex items-center justify-center h-20">
-          <div className="w-1/2">
-            <h1 className="frase-preta text-[30px] relative left-[35%]">Novos professores</h1>
-          </div>
-          <div className="w-1/2 flex">
-            <div className="m-auto">
-              <input className="mr-10 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-540 focus:border-indigo-550 sm:text-sm rounded-md" placeholder="Buscar Professor(a)" />
+
+        <div className="border-t-4 border-black mt-10">
+        <div className="flex items-center">
+              <h1 className="frase-preta text-[30px]" style={{ marginTop: '40px' }}>Todos os professores</h1>
+               <div className="m-auto">
+              <input className="mr-2 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black" 
+                placeholder="Buscar Professor(a)"/>
             </div>
-          </div>
-        </div>
-
-        {/* Adicionando os cartões de novos professores */}
-        <div className="flex justify-center flex-wrap">
-          {novosProfessores.map((professor, index) => (
-            <ProfessorCard
-              key={index}
-              name={professor.name}
-              subject={professor.subject}
-              imageUrl={professor.imageUrl}
-            />
-          ))}
-        </div>
-
-        <div style={{ width: '1159px', margin: '0 auto' }}>
-          <div className="border-t-4 border-black mt-10">
-            <div className="flex items-center">
-              <h1 className="frase-preta text-[30px]">Todos os professores</h1>
-              <input
+            <input
                 className="sm:text-sm rounded-md"
                 type="button"
                 value="Ordenar"
                 style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
                 onClick={handleButtonClick}
               />
-            </div>
-          </div>
-          {showOptions && (
-            <div className="mt-4">
-              <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
-                <tbody>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Nome</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Matéria</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Recentes</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-black border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>Antigas</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )}
+    
         </div>
-
-        {/* Adicionando os cartões de todos os professores */}
-        <div className="flex justify-center flex-wrap mt-10">
+        {showOptions && (
+        <div className="mt-4">
+          <table className="table-auto w-full border-t-4" style={{ background: '#ADD8E6', marginLeft: 'auto', maxWidth: '250px' }}>
+          <tbody>
+            <tr>
+              <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Nome</button>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Matéria</button>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Recentes</button>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-2 border border-gray-300" style={{ display: 'flex', justifyContent: 'center' }}>
+                <button className="text-black" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Antigas</button>
+              </td>
+            </tr>
+          </tbody>
+          </table>
+        </div>)}
+        </div>
+       <div className="flex justify-center flex-wrap">
+          {novosProfessores.map((professor, index) => (
+            <ProfessorCard
+              key={index}
+              name={professor.name}
+              subject={professor.subject}
+              imageUrl={professor.imageUrl}/>
+          ))}
+       </div>
+       <div style={{ width: '1159px', margin: '0 auto' }}>
+        
+       
+       </div>
+       <div className="flex justify-center flex-wrap mt-10">
           {todosProfessores.map((professor, index) => (
             <ProfessorCard
               key={index}
               name={professor.name}
               subject={professor.subject}
-              imageUrl={professor.imageUrl}
-            />
+              imageUrl={professor.imageUrl}/>
           ))}
-        </div>
+       </div>
       </div>
     </div>
   );
