@@ -15,6 +15,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+.btnSpacing {
+  margin-top:-14px; /* Você pode ajustar esse valor conforme necessário */
+}
 
 body {
   color: rgb(var(--foreground-rgb));

@@ -89,24 +89,96 @@ export default function Login(): JSX.Element {
         </a>
     </div>
     {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded-lg">
-            {/* Campo de entrada para o nome e o curso */}
-            <input
-              type="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="Digite seu nome "
-              className="border border-gray-400 mb-4 p-2 rounded-md"
-            />
-            {/* Botões de submissão e cancelamento */}
-            <div className="flex justify-center"> 
-              <button onClick={closeModal} className="mr-2 px-4 py-2 bg-gray-200 rounded-md justify-content: center">Salvar</button> 
-            </div>
-
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+    <div className="bg-white p-16 rounded-lg flex flex-col justify-center items-center ">
+      {/* Campo de entrada para o nome */}
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Nome"
+        className="border border-gray-400 mb-4 p-2 rounded-md text-black"
+      />
+      
+      {/* Campo de entrada para o email */}
+      <div className="mb-2 w-full">
+        <label htmlFor="email" className="block mb-1 btnSpacing">Email:</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Email"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Campo de entrada para o curso */}
+      <div className="mb-2 w-full">
+        <label htmlFor="curso" className="block mb-1 btnSpacing">Curso:</label>
+        <input
+          type="text"
+          id="curso"
+          placeholder="Curso"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Campo de entrada para o departamento */}
+      <div className="mb-2 w-full">
+        <label htmlFor="departamento" className="block mb-1 btnSpacing">Departamento:</label>
+        <input
+          type="text"
+          id="departamento"
+          placeholder="Departamento"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Campos para Senha */}
+      <div className="mb-2 w-full">
+        <label htmlFor="senhaAtual" className="block mb-1 btnSpacing">Senha Atual:</label>
+        <input
+          type="password"
+          id="senhaAtual"
+          placeholder="Senha atual"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      <div className="mb-2 w-full ">
+        <label htmlFor="novaSenha" className="block mb-1 btnSpacing">Nova Senha:</label>
+        <input
+          type="password"
+          id="novaSenha"
+          placeholder="Nova senha"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      <div className="mb-2 w-full ">
+        <label htmlFor="confirmNovaSenha" className="block mb-1 btnSpacing">Confirma Nova Senha:</label>
+        <input
+          type="password"
+          id="confirmNovaSenha"
+          placeholder="Confirme sua nova senha"
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
+      
+      {/* Botão de submissão */}
+      <div className="flex justify-center w-full">
+      <div className="mr-2">
+        <button onClick={closeModal} className="px-4 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+          Salvar
+        </button>
+      </div>
+      {/* Botão de cancelar edição de cancelar edição */}
+      <div className="mr-2">
+        <button onClick={closeModal} className="px-5 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+          Cancelar
+        </button>
+      </div>
+      </div>
+    </div>
+  </div>
+)}
      {/*  A parte de cima do codigo, com os botões */}
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto' }}>
       <div style={{ width: '1159px', margin: '0 auto' }}>
@@ -204,7 +276,7 @@ export default function Login(): JSX.Element {
       }}>
       {/* Campo de entrada para Nome do Professor */}
      <input
-       className="sm:text-sm rounded-md"
+       className="sm:text-sm rounded-md text-black"
        type="text"
        placeholder="Nome do Professor"
        style={{
@@ -219,7 +291,7 @@ export default function Login(): JSX.Element {
     />
     {/* Campo de entrada para Disciplina */}
     <input
-      className="sm:text-sm rounded-md"
+      className="sm:text-sm rounded-md text-black"
       type="text"
       placeholder="Disciplina"
       style={{
@@ -234,7 +306,7 @@ export default function Login(): JSX.Element {
     />
 {/* Coloquei textarea para que a parte de baixo o usuario consiga digitar */}
 <textarea
-  className="sm:text-sm rounded-md"
+  className="sm:text-sm rounded-md text-black"
   style={{ marginTop: '20px', height: '65%', background: '#A4FED3' ,width:'98%'}}
   placeholder="Escreva algo aqui..."
 ></textarea>
