@@ -76,7 +76,7 @@ export default function Login(): JSX.Element {
     });
   };
 
-  // Dados dos professores (adicionando a propriedade 'date')
+  // Dados dos professores 
   const novosProfessores: ProfessorCardProps[] = [
     { name: 'Rick Sanchez', subject: 'Segurança Computacional', imageUrl: 'https://cajamar.sp.gov.br/noticias/wp-content/uploads/sites/2/2021/07/site-vacinacao-38-anos-2.png', date: '2024-06-01' },
     { name: 'Marta Silva', subject: 'Biologia', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTblNoGuPCs3KLSTfmjzTr5giFXU80sMye1zxS_6cl7t91QbXaPLzcLPgUZyeEuxr5FFrg&usqp=CAU', date: '2024-04-22' },
