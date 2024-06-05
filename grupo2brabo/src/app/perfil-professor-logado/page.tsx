@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 
 /* Declarando oque vai ter no post */
@@ -43,6 +44,62 @@ const user: User = {
 };
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
+    const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
+    const [showModal, setShowModal] = useState(false);
+    /* para poder confirma se as senhas do modal edital perfil */
+    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [newPasswordError, setNewPasswordError] = useState('');
+    const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
+
+
+    const handleSave = () => {
+        let isValid = true;
+
+        // Verificar se todas as senhas têm pelo menos 8 caracteres
+        if (password.length < 8) {
+            setPasswordError('A senha precisa ter no mínimo 8 caracteres.');
+            isValid = false;
+        } else {
+            setPasswordError('');
+        }
+
+        if (newPassword.length < 8) {
+            setNewPasswordError('A nova senha precisa ter no mínimo 8 caracteres.');
+            isValid = false;
+        } else {
+            setNewPasswordError('');
+        }
+
+        if (confirmNewPassword.length < 8) {
+            setConfirmNewPasswordError('A confirmação da nova senha precisa ter no mínimo 8 caracteres.');
+            isValid = false;
+        } else {
+            setConfirmNewPasswordError('');
+        }
+
+        if (isValid) {
+            // Se as senhas tiverem o comprimento mínimo, fechar o modal
+            closeModal();
+        }
+    };
+    // Função para lidar com a abertura do modal
+    const openModal = () => {
+        setShowModal(true);
+    };
+    const closeModal = () => {
+        setShowModal(false);
+        // Limpar o texto quando o modal é fechado
+        setText("");
+        setShowModal(false);
+        setPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+    };
+
+
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
             {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
@@ -78,8 +135,104 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             </div>
                         </div>
                         <div className="flex flex-col space-y-2">
-                            <button className="bg-[#A4FED3] hover:bg-[#81E8B2] text-black font-bold py-2 px-14 rounded-full">Editar Perfil</button> {/*hover:bg - efeito de passar o mouse */}
+                        <button onClick={openModal}>
+                                <button className="bg-[#A4FED3] hover:bg-[#81E8B2] text-black font-bold py-2 px-14 rounded-full">Editar Perfil</button>
+                            </button>
                             <button className="bg-[#FFB6B6] hover:bg-[#FF7F7F] text-black font-bold py-2 px-14 rounded-full">Excluir Perfil</button>
+                            {showModal && (
+                                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                                    <div className="bg-white p-16 rounded-lg flex flex-col justify-center items-center ">
+
+                                        {/* Campo de entrada para o email */}
+                                        <div className="mb-2 w-full">
+
+                                            <input
+                                                type="text"
+                                                id="Nome"
+                                                placeholder="Nome "
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+
+                                        {/* Campo de entrada para o email */}
+                                        <div className="mb-2 w-full">
+
+                                            <input
+                                                type="text"
+                                                id="email"
+                                                placeholder="Email"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+
+                                        {/* Campo de entrada para o curso */}
+                                        <div className="mb-2 w-full">
+
+
+                                            <input
+                                                type="text"
+                                                id="curso"
+                                                placeholder="Curso"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+
+                                        {/* Campo de entrada para o departamento */}
+                                        <div className="mb-2 w-full">
+
+                                            <input
+                                                type="text"
+                                                id="departamento"
+                                                placeholder="Departamento"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+                                        {/* Campo de entrada para senha*/}
+                                        <div className="mb-2 w-full">
+                                            <input
+                                                type="password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                placeholder="Senha atual"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            /></div>
+                                        {passwordError && <p className="text-red-500">{passwordError}</p>}
+                                        {/* Campo de entrada para nova senha*/}
+                                        <div className="mb-2 w-full">
+                                            <input
+                                                type="password"
+                                                value={newPassword}
+                                                onChange={(e) => setNewPassword(e.target.value)}
+                                                placeholder="Nova senha"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            /></div>
+                                        {newPasswordError && <p className="text-red-500">{newPasswordError}</p>}
+                                        {/* Campo de entrada para confirma nova senha */}
+                                        <div className="mb-2 w-full">
+                                            <input
+                                                type="password"
+                                                value={confirmNewPassword}
+                                                onChange={(e) => setConfirmNewPassword(e.target.value)}
+                                                placeholder="Confirme sua nova senha"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            /></div>
+                                        {confirmNewPasswordError && <p className="text-red-500">{confirmNewPasswordError}</p>}
+                                        <div className="flex justify-center w-full">
+                                            <div className="mr-2">
+                                                <button onClick={handleSave} className="px-4 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+                                                    Salvar
+                                                </button>
+                                            </div>
+                                            <div className="mr-2">
+                                                <button onClick={closeModal} className="px-5 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+                                                    Cancelar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                            }
                         </div>
                     </div>
 

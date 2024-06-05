@@ -97,7 +97,6 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
 
 
 
-    const [showGreenScreen, setShowGreenScreen] = useState(false);
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
             {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
