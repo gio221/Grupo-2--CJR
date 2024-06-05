@@ -30,18 +30,48 @@ const user: User = {
             date: "15/04/2024, às 21:42",
             category: "Rick. Viagem Interdimensional",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
-            comments: 5,
+            comments: 1,
             avatar:"avatar.png"
         },
         {
             date: "10/04/2024, às 11:12",
             category: "Rick - Estrutura de Dados",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin",
-            comments: 3,
+            comments: 1,
             avatar: "avatar-bart.png"
         },
     ],
 };
+
+interface Comment {
+    avatar: string;
+    name: string;
+    date: string;
+    content: string;
+}
+
+const comments: Comment[] = [
+    {
+        avatar: "avatar-comentario.png",
+        name: "Sans",
+        date: "18/06/2024 á 21:43",
+        content: "Muito Bom"
+    },
+    {
+        avatar: "avatar-bart.png",
+        name: "El barto",
+        date: "19/06/2024 ás 10:20",
+        content: "Legal"
+    },
+];
+const newPost: Post = {
+    date: "20/06/2024",
+    category: "Outro Autor - Outro Tópico",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus nec massa fringilla, eget lobortis ipsum tempus. Aliquam euismod auctor ligula, ut lobortis tortor aliquet non. Nam nec metus quis ex tincidunt tempor sit amet sit amet lacus. Nullam auctor nec neque a rhoncus. Donec sed velit eget est commodo fermentum. Mauris non nunc eu libero consectetur pharetra. Donec ut sapien sit amet lorem eleifend accumsan. Vestibulum placerat lacus eget felis vestibulum, non vulputate metus ultrices.",
+    comments: 0,
+};
+
+const updatedPosts = [...user.posts, newPost];
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
@@ -53,12 +83,12 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [passwordError, setPasswordError] = useState('');
     const [newPasswordError, setNewPasswordError] = useState('');
     const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
-
+    const [isCommentModalOpen, setIsCommentModalOpen] = useState(Array(user.posts.length).fill(false));
+    const [newComment, setNewComment] = useState("");
 
     const handleSave = () => {
         let isValid = true;
 
-        // Verificar se todas as senhas têm pelo menos 8 caracteres
         if (password.length < 8) {
             setPasswordError('A senha precisa ter no mínimo 8 caracteres.');
             isValid = false;
@@ -81,23 +111,36 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         }
 
         if (isValid) {
-            // Se as senhas tiverem o comprimento mínimo, fechar o modal
             closeModal();
         }
     };
-    // Função para lidar com a abertura do modal
+
     const openModal = () => {
         setShowModal(true);
     };
+
     const closeModal = () => {
         setShowModal(false);
-        // Limpar o texto quando o modal é fechado
         setText("");
         setShowModal(false);
         setPassword('');
         setNewPassword('');
         setConfirmNewPassword('');
     };
+
+    const toggleCommentModal = (index: number) => {
+        const updatedIsCommentModalOpen = [...isCommentModalOpen];
+        updatedIsCommentModalOpen[index] = !updatedIsCommentModalOpen[index];
+        setIsCommentModalOpen(updatedIsCommentModalOpen);
+    };
+
+    const handlePostComment = () => {
+        // Adicionar lógica para postar o comentário
+        // Aqui você pode enviar o conteúdo do novo comentário para o servidor, etc.
+        // Por enquanto, apenas limpar o texto do novo comentário
+        setNewComment("");
+    };
+
 
 
     return (
@@ -257,15 +300,15 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                 </div>
                                     <p className="mt-4 text-gray-900">{post.content}</p>
                                     <div className="mt-2 flex items-center">
-                                    <button className="comment-button" >
-            <img
-                className="py-1 px-1"
-                src="/cometario.png"
-                style={{ width: '50px', height: '36px', marginLeft: '-15px', top: '6px' }}
-                alt="Comentário"
-            />
-        </button>
-                                        <p className="text-sm text-gray-600 font-bold ml-2">{post.comments} comentários</p>
+                                    <button className="comment-button" onClick={() => toggleCommentModal(index)}>
+                                            <img
+                                                className="py-1 px-1"
+                                                src="/cometario.png"
+                                                style={{ width: '50px', height: '36px', marginLeft: '-15px', top: '6px' }}
+                                                alt="Comentário"
+                                            />
+                                        </button>
+                                        <p className="text-sm text-gray-600 font-bold  ml-2">{post.comments} comentários</p>
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: 'auto' }}
                                         >
@@ -285,6 +328,38 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                             />
                                         </button>
                                     </div>
+                                    {isCommentModalOpen[index] && (
+                                        <div className="modal" style={{ backgroundColor: '#A4FED3', width: '651px', height: '292px', top: '34px', left: '57px', gap: '5px', opacity: '1' }}>
+                                            <div className="modal-content" style={{ backgroundColor: '#A4FED3', color: 'white' }}>
+                                                <span className="close" onClick={() => toggleCommentModal(index)}>&times;</span>
+                                                <div className="flex items-center">
+                                                    <img src={comments[index].avatar} alt="Avatar" className="w-20 h-20 rounded-full border-4 border-white" />
+                                                    <div className="ml-4">
+                                                        <h2 className="text-2xl font-bold text-black">{comments[index].name}</h2>
+
+                                                        <div className="flex items-center">
+                                                            <img
+                                                                className="py-1 px-1"
+                                                                src="https://static.thenounproject.com/png/620322-200.png"
+                                                                alt="Notificação"
+                                                                style={{ width: '39px', height: '39px', marginRight: '12px' }}
+                                                            />
+                                                            <div>
+                                                                <p className="text-lg text-black">{comments[index].date}</p>
+                                                                <p className="text-lg text-black">{comments[index].content}</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    )}
+
+
                                 </div>
                             ))}
                         </div>
