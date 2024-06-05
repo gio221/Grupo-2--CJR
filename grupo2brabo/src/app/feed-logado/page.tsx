@@ -37,6 +37,46 @@ export default function Login(): JSX.Element {
   const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
 
 
+  const [password, setPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [newPasswordError, setNewPasswordError] = useState('');
+  const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
+
+
+  const handleSave = () => {
+    let isValid = true;
+
+    // Verificar se todas as senhas têm pelo menos 8 caracteres
+    if (password.length < 8) {
+      setPasswordError('A senha precisa ter no mínimo 8 caracteres.');
+      isValid = false;
+    } else {
+      setPasswordError('');
+    }
+
+    if (newPassword.length < 8) {
+      setNewPasswordError('A nova senha precisa ter no mínimo 8 caracteres.');
+      isValid = false;
+    } else {
+      setNewPasswordError('');
+    }
+
+    if (confirmNewPassword.length < 8) {
+      setConfirmNewPasswordError('A confirmação da nova senha precisa ter no mínimo 8 caracteres.');
+      isValid = false;
+    } else {
+      setConfirmNewPasswordError('');
+    }
+
+    if (isValid) {
+      // Se as senhas tiverem o comprimento mínimo, fechar o modal
+      closeModal();
+      // Execute sua lógica de salvamento aqui
+      console.log('Salvo com sucesso!');
+    }
+  };
   // Função para lidar com a abertura do modal
   const openModal = () => {
     setShowModal(true);
@@ -151,16 +191,19 @@ export default function Login(): JSX.Element {
       <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Sair" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
         </a>
         {showModal && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
     <div className="bg-white p-16 rounded-lg flex flex-col justify-center items-center ">
-      {/* Campo de entrada para o nome */}
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Nome"
-        className="border border-gray-400 mb-4 p-2 rounded-md text-black"
-      />
+      
+      {/* Campo de entrada para o email */}
+      <div className="mb-2 w-full">
+       
+        <input
+          type="text"
+          id="Nome"
+          placeholder="Nome "
+          className="border border-gray-400 p-2 rounded-md w-full text-black"
+        />
+      </div>
      
       {/* Campo de entrada para o email */}
       <div className="mb-2 w-full">
@@ -195,53 +238,46 @@ export default function Login(): JSX.Element {
           className="border border-gray-400 p-2 rounded-md w-full text-black"
         />
       </div>
-     
-      {/* Campos para Senha */}
-      <div className="mb-2 w-full">
-       
-        <input
-          type="password"
-          id="senhaAtual"
-          placeholder="Senha atual"
-          className="border border-gray-400 p-2 rounded-md w-full text-black"
-        />
-      </div>
-      <div className="mb-2 w-full ">
- 
-        <input
-          type="password"
-          id="novaSenha"
-          placeholder="Nova senha"
-          className="border border-gray-400 p-2 rounded-md w-full text-black"
-        />
-      </div>
-      <div className="mb-2 w-full ">
-       
-        <input
-          type="password"
-          id="confirmNovaSenha"
-          placeholder="Confirme sua nova senha"
-          className="border border-gray-400 p-2 rounded-md w-full text-black"
-        />
-      </div>
-     
-      {/* Botão de submissão */}
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Senha atual"
+        className="border border-gray-400 p-2 rounded-md w-full text-black"
+      />
+      {passwordError && <p className="text-red-500">{passwordError}</p>}
+      <input
+        type="password"
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+        placeholder="Nova senha"
+        className="border border-gray-400 p-2 rounded-md w-full text-black"
+      />
+      {newPasswordError && <p className="text-red-500">{newPasswordError}</p>}
+      <input
+        type="password"
+        value={confirmNewPassword}
+        onChange={(e) => setConfirmNewPassword(e.target.value)}
+        placeholder="Confirme sua nova senha"
+        className="border border-gray-400 p-2 rounded-md w-full text-black"
+      />
+      {confirmNewPasswordError && <p className="text-red-500">{confirmNewPasswordError}</p>}
       <div className="flex justify-center w-full">
-      <div className="mr-2">
-        <button onClick={closeModal} className="px-4 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
-          Salvar
-        </button>
-      </div>
-     {/*  Botão de cancelar edição de cancelar */}
-      <div className="mr-2">
-        <button onClick={closeModal} className="px-5 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
-          Cancelar
-        </button>
-      </div>
+        <div className="mr-2">
+          <button onClick={handleSave} className="px-4 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+            Salvar
+          </button>
+        </div>
+        <div className="mr-2">
+          <button onClick={closeModal} className="px-5 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   </div>
-)}
+)
+}
 
     </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
