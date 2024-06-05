@@ -105,7 +105,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
             {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
             <div className="relative">
                 <Nav />
-                <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
+              
                 <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
                 <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
         </a>
@@ -257,11 +257,14 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                 </div>
                                     <p className="mt-4 text-gray-900">{post.content}</p>
                                     <div className="mt-2 flex items-center">
-                                        <img
-                                            className="py-1 px-1"
-                                            src="/cometario.png"
-                                            style={{ width: '36px', height: '36px', marginLeft: '-15px', top: '6px' }}
-                                        />
+                                    <button className="comment-button" >
+            <img
+                className="py-1 px-1"
+                src="/cometario.png"
+                style={{ width: '50px', height: '36px', marginLeft: '-15px', top: '6px' }}
+                alt="Comentário"
+            />
+        </button>
                                         <p className="text-sm text-gray-600 font-bold ml-2">{post.comments} comentários</p>
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: 'auto' }}

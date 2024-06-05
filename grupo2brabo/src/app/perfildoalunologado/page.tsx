@@ -17,7 +17,6 @@ interface User {
     posts: Post[];
 }
 
-// infos do morty(usuario)
 const user: User = {
     name: "Morty Gamer",
     course: "Ciência da Computação / Dept. Ciência da Computação",
@@ -28,33 +27,62 @@ const user: User = {
             date: "17/04/2024, às 21:42",
             category: "João Frango - Surf",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin texts.",
-            comments: 2,
+            comments: 1,
         },
         {
             date: "15/04/2024, às 21:42",
             category: "Rick - Viagem Interdimensional",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-            comments: 3,
+            comments: 1,
         },
     ],
 };
+interface Comment {
+    avatar: string;
+    name: string;
+    date: string;
+    content: string;
+}
+
+const comments: Comment[] = [
+    {
+        avatar: "avatar-comentario.png",
+        name: "Sans",
+        date: "18/06/2024 á 21:43",
+        content: "Muito Bom"
+    },
+    {
+        avatar: "avatar-bart.png",
+        name: "El barto",
+        date: "19/06/2024 ás 10:20",
+        content: "Legal"
+    },
+];
+const newPost: Post = {
+    date: "20/06/2024",
+    category: "Outro Autor - Outro Tópico",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus nec massa fringilla, eget lobortis ipsum tempus. Aliquam euismod auctor ligula, ut lobortis tortor aliquet non. Nam nec metus quis ex tincidunt tempor sit amet sit amet lacus. Nullam auctor nec neque a rhoncus. Donec sed velit eget est commodo fermentum. Mauris non nunc eu libero consectetur pharetra. Donec ut sapien sit amet lorem eleifend accumsan. Vestibulum placerat lacus eget felis vestibulum, non vulputate metus ultrices.",
+    comments: 0,
+};
+
+const updatedPosts = [...user.posts, newPost];
+
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
-    const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
+    const [text, setText] = useState("");
     const [showModal, setShowModal] = useState(false);
-    /* para poder confirma se as senhas do modal edital perfil */
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [newPasswordError, setNewPasswordError] = useState('');
     const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
-
+    const [isCommentModalOpen, setIsCommentModalOpen] = useState(Array(user.posts.length).fill(false));
+    const [newComment, setNewComment] = useState("");
 
     const handleSave = () => {
         let isValid = true;
 
-        // Verificar se todas as senhas têm pelo menos 8 caracteres
         if (password.length < 8) {
             setPasswordError('A senha precisa ter no mínimo 8 caracteres.');
             isValid = false;
@@ -77,17 +105,16 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         }
 
         if (isValid) {
-            // Se as senhas tiverem o comprimento mínimo, fechar o modal
             closeModal();
         }
     };
-    // Função para lidar com a abertura do modal
+
     const openModal = () => {
         setShowModal(true);
     };
+
     const closeModal = () => {
         setShowModal(false);
-        // Limpar o texto quando o modal é fechado
         setText("");
         setShowModal(false);
         setPassword('');
@@ -95,24 +122,30 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         setConfirmNewPassword('');
     };
 
+    const toggleCommentModal = (index: number) => {
+        const updatedIsCommentModalOpen = [...isCommentModalOpen];
+        updatedIsCommentModalOpen[index] = !updatedIsCommentModalOpen[index];
+        setIsCommentModalOpen(updatedIsCommentModalOpen);
+    };
 
+    const handlePostComment = () => {
+        // Adicionar lógica para postar o comentário
+        // Aqui você pode enviar o conteúdo do novo comentário para o servidor, etc.
+        // Por enquanto, apenas limpar o texto do novo comentário
+        setNewComment("");
+    };
 
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
-            {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
             <div className="relative">
                 <Nav />
                 <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
-                <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
-                </a>
+                <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button></a>
             </div>
 
-            {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">
                 <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
                     <img className="py-1 px-1" src="setamaior.png" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
-
-                    {/* perfil do usuario */}
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
                         <div className="flex items-center">
                             <img src={user.avatar} className="w-20 h-20 rounded-full border-4 border-white" alt="Avatar" />
@@ -138,10 +171,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             {showModal && (
                                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
                                     <div className="bg-white p-16 rounded-lg flex flex-col justify-center items-center ">
-
-                                        {/* Campo de entrada para o email */}
                                         <div className="mb-2 w-full">
-
                                             <input
                                                 type="text"
                                                 id="Nome"
@@ -149,10 +179,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
                                             />
                                         </div>
-
-                                        {/* Campo de entrada para o email */}
                                         <div className="mb-2 w-full">
-
                                             <input
                                                 type="text"
                                                 id="email"
@@ -160,11 +187,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
                                             />
                                         </div>
-
-                                        {/* Campo de entrada para o curso */}
                                         <div className="mb-2 w-full">
-
-
                                             <input
                                                 type="text"
                                                 id="curso"
@@ -172,10 +195,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
                                             />
                                         </div>
-
-                                        {/* Campo de entrada para o departamento */}
                                         <div className="mb-2 w-full">
-
                                             <input
                                                 type="text"
                                                 id="departamento"
@@ -183,7 +203,6 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
                                             />
                                         </div>
-                                        {/* Campo de entrada para senha*/}
                                         <div className="mb-2 w-full">
                                             <input
                                                 type="password"
@@ -191,9 +210,9 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 onChange={(e) => setPassword(e.target.value)}
                                                 placeholder="Senha atual"
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
-                                            /></div>
+                                            />
+                                        </div>
                                         {passwordError && <p className="text-red-500">{passwordError}</p>}
-                                        {/* Campo de entrada para nova senha*/}
                                         <div className="mb-2 w-full">
                                             <input
                                                 type="password"
@@ -201,9 +220,9 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 onChange={(e) => setNewPassword(e.target.value)}
                                                 placeholder="Nova senha"
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
-                                            /></div>
+                                            />
+                                        </div>
                                         {newPasswordError && <p className="text-red-500">{newPasswordError}</p>}
-                                        {/* Campo de entrada para confirma nova senha */}
                                         <div className="mb-2 w-full">
                                             <input
                                                 type="password"
@@ -211,7 +230,8 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 onChange={(e) => setConfirmNewPassword(e.target.value)}
                                                 placeholder="Confirme sua nova senha"
                                                 className="border border-gray-400 p-2 rounded-md w-full text-black"
-                                            /></div>
+                                            />
+                                        </div>
                                         {confirmNewPasswordError && <p className="text-red-500">{confirmNewPasswordError}</p>}
                                         <div className="flex justify-center w-full">
                                             <div className="mr-2">
@@ -227,19 +247,13 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                         </div>
                                     </div>
                                 </div>
-                            )
-                            }
+                            )}
                         </div>
                     </div>
-
-                    {/* linhazinha da divisória */}
                     <hr className="border-gray-300 my-4" />
-
-                    {/* titulo das publicações */}
                     <div className="px-4">
                         <h3 className="text-black font-bold">Publicações</h3>
                     </div>
-
                     <div className="p-4">
                         <div className="space-y-4">
                             {user.posts.map((post, index) => (
@@ -253,17 +267,21 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                     </div>
                                     <p className="mt-4 text-gray-900">{post.content}</p>
                                     <div className="mt-2 flex items-center">
-                                        <img className="py-1 px-1" src="cometario.png"
-                                            alt="Comemtário"
-                                            style={{ width: '36px', height: '36px', marginLeft: '-15px', top: '6px' }}
-                                        />
+                                        <button className="comment-button" onClick={() => toggleCommentModal(index)}>
+                                            <img
+                                                className="py-1 px-1"
+                                                src="/cometario.png"
+                                                style={{ width: '50px', height: '36px', marginLeft: '-15px', top: '6px' }}
+                                                alt="Comentário"
+                                            />
+                                        </button>
                                         <p className="text-sm text-gray-600 font-bold  ml-2">{post.comments} comentários</p>
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: 'auto' }}
                                         >
                                             <img
                                                 src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9cb257e39b468ffcefd3f773c1a5b86158583e3c"
-                                                alt="Edit"
+                                                alt="editar"
                                                 style={{ width: '24px', height: '24px' }}
                                             />
                                         </button>
@@ -272,11 +290,47 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                         >
                                             <img
                                                 src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/6521bc214120289f32b07807d5a3f7113ad37ad7"
-                                                alt="Delete"
+                                                alt="excluir"
                                                 style={{ width: '24px', height: '24px' }}
                                             />
                                         </button>
+
                                     </div>
+
+
+                                    {isCommentModalOpen[index] && (
+                                        <div className="modal" style={{ backgroundColor: '#A4FED3', width: '651px', height: '292px', top: '34px', left: '57px', gap: '5px', opacity: '1' }}>
+                                            <div className="modal-content" style={{ backgroundColor: '#A4FED3', color: 'white' }}>
+                                                <span className="close" onClick={() => toggleCommentModal(index)}>&times;</span>
+                                                <div className="flex items-center">
+                                                    <img src={comments[index].avatar} alt="Avatar" className="w-20 h-20 rounded-full border-4 border-white" />
+                                                    <div className="ml-4">
+                                                        <h2 className="text-2xl font-bold text-black">{comments[index].name}</h2>
+
+                                                        <div className="flex items-center">
+                                                            <img
+                                                                className="py-1 px-1"
+                                                                src="https://static.thenounproject.com/png/620322-200.png"
+                                                                alt="Notificação"
+                                                                style={{ width: '39px', height: '39px', marginRight: '12px' }}
+                                                            />
+                                                            <div>
+                                                                <p className="text-lg text-black">{comments[index].date}</p>
+                                                                <p className="text-lg text-black">{comments[index].content}</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    )}
+
+
+
                                 </div>
                             ))}
                         </div>
