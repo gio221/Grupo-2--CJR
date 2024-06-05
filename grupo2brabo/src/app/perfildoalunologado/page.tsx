@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 
 interface Post {
@@ -17,10 +18,10 @@ interface User {
 }
 
 // infos do morty(usuario)
-const user: User = { 
+const user: User = {
     name: "Morty Gamer",
     course: "Ciência da Computação / Dept. Ciência da Computação",
-    email: "Morty.gamer.23@cjr.org.br", 
+    email: "Morty.gamer.23@cjr.org.br",
     avatar: "avatar.png",
     posts: [
         {
@@ -39,22 +40,79 @@ const user: User = {
 };
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
+    const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
+    const [showModal, setShowModal] = useState(false);
+    /* para poder confirma se as senhas do modal edital perfil */
+    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [newPasswordError, setNewPasswordError] = useState('');
+    const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
+
+
+    const handleSave = () => {
+        let isValid = true;
+
+        // Verificar se todas as senhas têm pelo menos 8 caracteres
+        if (password.length < 8) {
+            setPasswordError('A senha precisa ter no mínimo 8 caracteres.');
+            isValid = false;
+        } else {
+            setPasswordError('');
+        }
+
+        if (newPassword.length < 8) {
+            setNewPasswordError('A nova senha precisa ter no mínimo 8 caracteres.');
+            isValid = false;
+        } else {
+            setNewPasswordError('');
+        }
+
+        if (confirmNewPassword.length < 8) {
+            setConfirmNewPasswordError('A confirmação da nova senha precisa ter no mínimo 8 caracteres.');
+            isValid = false;
+        } else {
+            setConfirmNewPasswordError('');
+        }
+
+        if (isValid) {
+            // Se as senhas tiverem o comprimento mínimo, fechar o modal
+            closeModal();
+        }
+    };
+    // Função para lidar com a abertura do modal
+    const openModal = () => {
+        setShowModal(true);
+    };
+    const closeModal = () => {
+        setShowModal(false);
+        // Limpar o texto quando o modal é fechado
+        setText("");
+        setShowModal(false);
+        setPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+    };
+
+
+
+    const [showGreenScreen, setShowGreenScreen] = useState(false);
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
             {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
-       <div className="relative">
-        <Nav />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9a188b44cab75de84a60500b8d6b541bb01d27ba" alt="Notificação" style={{ width: '45px', height: '45px', marginLeft: '80%', position: 'absolute', top: '12px' }} />
-        <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
-        <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
-        </a>
-      </div>
+            <div className="relative">
+                <Nav />
+                <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
+                <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
+                </a>
+            </div>
 
             {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">
-                <div className="w-full max-w-3xl bg-white rounded-lg shadow-md"> 
-                    <img className="py-1 px-1" src="https://s3-alpha-sig.figma.com/img/41d2/9b03/1f1304be9e1316052b37d56ea083de64?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Vk73cX7gn3-9byD2wbFMkVh9V51DWRt3vtxMcHv8-PnY-jQBH3aDeqSYaGmMOHhgeLNKJxGvdyckJ9mTv0JulzYjQzsnidCjDBRt12xY9Y-kWd~QAUADR48jKCO27pekwwwg7U~Zf1NQF8hV~C~jYqahvK4HDhCLnimKqp4y2L64rRtq0WqtdX7~ozoImcSBdOK1BF1MYC7axRq8Aol3YnNJTFvfg0eeNM1RIHAUXfXIB4srNfZdmwE2YnSlOtK6MaDZ4NDKvvXbQ4OsACGpgyhb~7Sy2OjrDMIyeEu0KPU6hlimYI9KQFG~qLftsjVklKjf0pAK-skXhg7POb9T5g__" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
-                    
+                <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
+                    <img className="py-1 px-1" src="setamaior.png" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
+
                     {/* perfil do usuario */}
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
                         <div className="flex items-center">
@@ -74,8 +132,104 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             </div>
                         </div>
                         <div className="flex flex-col space-y-2">
-                            <button className="bg-[#A4FED3] hover:bg-[#81E8B2] text-black font-bold py-2 px-4 rounded-full">Editar Perfil</button> {/*hover:bg - efeito de passar o mouse */}
+                            <button onClick={openModal}>
+                                <button className="bg-[#A4FED3] hover:bg-[#81E8B2] text-black font-bold py-2 px-14 rounded-full">Editar Perfil</button>
+                            </button>
                             <button className="bg-[#FFB6B6] hover:bg-[#FF7F7F] text-black font-bold py-2 px-4 rounded-full">Excluir Perfil</button>
+                            {showModal && (
+                                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                                    <div className="bg-white p-16 rounded-lg flex flex-col justify-center items-center ">
+
+                                        {/* Campo de entrada para o email */}
+                                        <div className="mb-2 w-full">
+
+                                            <input
+                                                type="text"
+                                                id="Nome"
+                                                placeholder="Nome "
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+
+                                        {/* Campo de entrada para o email */}
+                                        <div className="mb-2 w-full">
+
+                                            <input
+                                                type="text"
+                                                id="email"
+                                                placeholder="Email"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+
+                                        {/* Campo de entrada para o curso */}
+                                        <div className="mb-2 w-full">
+
+
+                                            <input
+                                                type="text"
+                                                id="curso"
+                                                placeholder="Curso"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+
+                                        {/* Campo de entrada para o departamento */}
+                                        <div className="mb-2 w-full">
+
+                                            <input
+                                                type="text"
+                                                id="departamento"
+                                                placeholder="Departamento"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            />
+                                        </div>
+                                        {/* Campo de entrada para senha*/}
+                                        <div className="mb-2 w-full">
+                                            <input
+                                                type="password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                placeholder="Senha atual"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            /></div>
+                                        {passwordError && <p className="text-red-500">{passwordError}</p>}
+                                        {/* Campo de entrada para nova senha*/}
+                                        <div className="mb-2 w-full">
+                                            <input
+                                                type="password"
+                                                value={newPassword}
+                                                onChange={(e) => setNewPassword(e.target.value)}
+                                                placeholder="Nova senha"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            /></div>
+                                        {newPasswordError && <p className="text-red-500">{newPasswordError}</p>}
+                                        {/* Campo de entrada para confirma nova senha */}
+                                        <div className="mb-2 w-full">
+                                            <input
+                                                type="password"
+                                                value={confirmNewPassword}
+                                                onChange={(e) => setConfirmNewPassword(e.target.value)}
+                                                placeholder="Confirme sua nova senha"
+                                                className="border border-gray-400 p-2 rounded-md w-full text-black"
+                                            /></div>
+                                        {confirmNewPasswordError && <p className="text-red-500">{confirmNewPasswordError}</p>}
+                                        <div className="flex justify-center w-full">
+                                            <div className="mr-2">
+                                                <button onClick={handleSave} className="px-4 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+                                                    Salvar
+                                                </button>
+                                            </div>
+                                            <div className="mr-2">
+                                                <button onClick={closeModal} className="px-5 py-2 rounded-md" style={{ backgroundColor: '#A4FED3' }}>
+                                                    Cancelar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                            }
                         </div>
                     </div>
 
@@ -100,9 +254,9 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                     </div>
                                     <p className="mt-4 text-gray-900">{post.content}</p>
                                     <div className="mt-2 flex items-center">
-                                        <img className="py-1 px-1" src="https://s3-alpha-sig.figma.com/img/1b65/efaf/4d4043a919b34c9b4f05a7c437b9c7a5?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RAFmSkSgCTZOB8euznMV7mhreQeu32AnTm6Vl2yrAYRgatRUpgIsiio89wjH-O5srN2pADKxz7VDK~IlwJ4P~VKEEJCfeGxLmhLNP4Gfxj~AkAU8Ssu5UIe9vKlJ2Igb4E5OoWvhUO~OQUg8AgNdXwYbhvxBSli6mvJ7nrzjU2kX5O-xYqCKymBqF~nYVpNX1I2d0aJv4YVmF7dsUk6jRQ3w~sGHq7ovDyWsHtAOUXvOSC-2JeAD33BFuS~b7VpB7WdrnLnbVITxpxBIxac0vOIb3w6Q1ciupxng7XI1MWzG8XnPfBxA7Kf5ou724eM-6RflLnXw~hX3cPWTiCnVVw__" 
-                                        alt="Notificação"
-                                        style={{ width: '36px', height: '36px', marginLeft: '-15px', top: '6px' }}
+                                        <img className="py-1 px-1" src="cometario.png"
+                                            alt="Comemtário"
+                                            style={{ width: '36px', height: '36px', marginLeft: '-15px', top: '6px' }}
                                         />
                                         <p className="text-sm text-gray-600 font-bold  ml-2">{post.comments} comentários</p>
                                         <button
