@@ -7,7 +7,7 @@ interface ProfessorCardProps {
   name: string;
   subject: string;
   imageUrl: string;
- /*  aqui eu adicionei a data */
+  /*  aqui eu adicionei a data */
   date: string;
 }
 
