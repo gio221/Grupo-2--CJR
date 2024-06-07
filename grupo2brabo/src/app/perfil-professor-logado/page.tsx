@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import React, { useState } from "react";
 import Nav from "../components/Nav";
 
@@ -64,14 +64,7 @@ const comments: Comment[] = [
         content: "Legal"
     },
 ];
-const newPost: Post = {
-    date: "20/06/2024",
-    category: "Outro Autor - Outro Tópico",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus nec massa fringilla, eget lobortis ipsum tempus. Aliquam euismod auctor ligula, ut lobortis tortor aliquet non. Nam nec metus quis ex tincidunt tempor sit amet sit amet lacus. Nullam auctor nec neque a rhoncus. Donec sed velit eget est commodo fermentum. Mauris non nunc eu libero consectetur pharetra. Donec ut sapien sit amet lorem eleifend accumsan. Vestibulum placerat lacus eget felis vestibulum, non vulputate metus ultrices.",
-    comments: 0,
-};
 
-const updatedPosts = [...user.posts, newPost];
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
@@ -149,7 +142,9 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
             <div className="relative">
                 <Nav />
               
-                <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '90%', position: 'absolute', top: '12px' }} />
+                <button onClick={openModal} style={{ position: 'absolute', top: '12px', right: '150px', border: 'none', background: 'none', cursor: 'pointer' }}>
+                    <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px' }} />
+                </button>
                 <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
         </a>
             </div>
@@ -157,7 +152,10 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
             {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">
                 <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
-                    <img className="py-1 px-1" src="/setamaior.png" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
+                  {/* botão da seta leva para feed logado */}
+                  <button className="py-1 px-1" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px', border: 'none', position: 'relative' }}>
+                        <a href="/feed-logado"> <img src="setamaior.png" alt="Notificação" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></a>
+                    </button>
                     
                     {/* perfil do usuario */}
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
@@ -178,9 +176,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             </div>
                         </div>
                         <div className="flex flex-col space-y-2">
-                        <button onClick={openModal}>
-                                <button className="bg-[#A4FED3] hover:bg-[#81E8B2] text-black font-bold py-2 px-14 rounded-full">Editar Perfil</button>
-                            </button>
+                      
                             <button className="bg-[#FFB6B6] hover:bg-[#FF7F7F] text-black font-bold py-2 px-14 rounded-full">Excluir Perfil</button>
                             {showModal && (
                                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
@@ -312,11 +308,6 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: 'auto' }}
                                         >
-                                            <img
-                                                src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9cb257e39b468ffcefd3f773c1a5b86158583e3c"
-                                                alt="Edit"
-                                                style={{ width: '24px', height: '24px' }}
-                                            />
                                         </button>
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: '8px' }}
@@ -369,3 +360,4 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         </div>
     );
 }
+ 

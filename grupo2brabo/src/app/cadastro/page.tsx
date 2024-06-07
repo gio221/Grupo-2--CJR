@@ -6,8 +6,10 @@ import axios from 'axios';
 
 export default function Cadastro(): JSX.Element {
     const router = useRouter()
+   /*  define o status de email e senha */
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+   /*  define a mensagem de erro */
     const [errorEmail, setErrorEmail] = useState('');
     const [errorSenha, setErrorSenha] = useState('');
 
@@ -32,7 +34,6 @@ export default function Cadastro(): JSX.Element {
             return;
         } else {
             setErrorSenha('');
-            //axios.post('http://localhost:3003/user', aquiVocêPassaOsBagulhos)
             router.push('/login')
         }
 
@@ -57,17 +58,17 @@ export default function Cadastro(): JSX.Element {
                         <input className="w-[30rem] outline-none" type="password" placeholder="Senha" value={senha} onChange={handleSenhaChange} />
                     </div><br></br>
                     <div className=" text-black w-[32rem] border-2 h-12 rounded-xl flex items-center justify-center bg-[#FFFFFF] drop-shadow-sm">
-                     <input className="w-[30rem] outline-none" placeholder="Curso"></input>
-                 </div><br></br>
+                        <input className="w-[30rem] outline-none" placeholder="Curso"></input>
+                    </div><br></br>
 
-                 <div className=" text-black w-[32rem] border-2 h-12 rounded-xl flex items-center justify-center bg-[#FFFFFF] drop-shadow-sm">
-                     <input className="w-[30rem] outline-none" placeholder="Departamento"></input>
-                 </div><br></br>
+                    <div className=" text-black w-[32rem] border-2 h-12 rounded-xl flex items-center justify-center bg-[#FFFFFF] drop-shadow-sm">
+                        <input className="w-[30rem] outline-none" placeholder="Departamento"></input>
+                    </div><br></br>
                 </form><br></br>
                 <div className="text-black w-[32rem] h-24 flex justify-evenly items-center">
-                <button className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness" onClick={handleCreateAccount}>Criar Conta</button>
+                    <button className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness" onClick={handleCreateAccount}>Criar Conta</button>
 
-                  
+
                 </div>
                 {/* Exibir mensagem de erro se houver */}
                 {errorEmail && <div className="text-red-500">{errorEmail}</div>}

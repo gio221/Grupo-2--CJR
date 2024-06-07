@@ -136,27 +136,29 @@ export default function Login(): JSX.Element {
 
       </div>
       <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
-        <div className="border-t-4 border-black mt-10">
+        <div className="border-t-4 border-black ">
           <div className="flex items-center justify-between">
             <h1 className="frase-preta text-[30px]" style={{ marginTop: '30px' }}>Todos os professores</h1>
-            <div>
-              {/*  botao que abre o modal nova publicação */}
+            <div className="flex">
+              {/* Botão que abre o modal nova publicação */}
               <input
-                className="sm:text-sm rounded-md"
+                className="sm:text-sm rounded-md "
                 type="button"
                 value="Nova Publicação"
                 onClick={toggleGreenScreen}
-                style={{ width: '150px', height: '55px', background: '#87CEEB', marginLeft: 'auto' }}
+                style={{ width: '150px', height: '55px', background: '#87CEEB' }}
               />
-            </div>
-            <div>
+              {/* Adicionando espaço entre os botões */}
+              <div style={{ width: '650px' }}></div>
+              {/* Input de busca */}
               <input
-                className="mr-2 block w-full px-3 py-2 border bg-white border-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black"
+                className="mr-2 block  px-2 py-2 border bg-white border-black shadow-sm focus:ring-indigo-400 focus:border-indigo-500 sm:text-sm rounded-md text-black"
                 placeholder="Buscar Professor(a)"
                 value={searchQuery}
                 onChange={handleSearch}
               />
             </div>
+
             <input
               className="sm:text-sm rounded-md"
               type="button"

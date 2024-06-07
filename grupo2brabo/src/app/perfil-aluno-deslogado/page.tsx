@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import Nav from "../components/Nav";
 
+/* interface do post */
 interface Post {
     date: string;
     category: string;
     content: string;
     comments: number;
 }
-
+/* interface do usuário */
 interface User {
     name: string;
     course: string;
@@ -16,7 +17,7 @@ interface User {
     avatar: string;
     posts: Post[];
 }
-
+/* criando as publicações */
 const user: User = {
     name: "Morty Gamer",
     course: "Ciência da Computação / Dept. Ciência da Computação",
@@ -37,13 +38,14 @@ const user: User = {
         },
     ],
 };
+/* interface comentario */
 interface Comment {
     avatar: string;
     name: string;
     date: string;
     content: string;
 }
-
+/* criando comentario */
 const comments: Comment[] = [
     {
         avatar: "avatar-comentario.png",
@@ -58,14 +60,6 @@ const comments: Comment[] = [
         content: "Legal"
     },
 ];
-const newPost: Post = {
-    date: "20/06/2024",
-    category: "Outro Autor - Outro Tópico",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus nec massa fringilla, eget lobortis ipsum tempus. Aliquam euismod auctor ligula, ut lobortis tortor aliquet non. Nam nec metus quis ex tincidunt tempor sit amet sit amet lacus. Nullam auctor nec neque a rhoncus. Donec sed velit eget est commodo fermentum. Mauris non nunc eu libero consectetur pharetra. Donec ut sapien sit amet lorem eleifend accumsan. Vestibulum placerat lacus eget felis vestibulum, non vulputate metus ultrices.",
-    comments: 0,
-};
-
-const updatedPosts = [...user.posts, newPost];
 
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
@@ -79,7 +73,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
     const [isCommentModalOpen, setIsCommentModalOpen] = useState(Array(user.posts.length).fill(false));
     const [newComment, setNewComment] = useState("");
-
+    /* função que verifica as senhas */
     const handleSave = () => {
         let isValid = true;
 
@@ -128,24 +122,20 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         setIsCommentModalOpen(updatedIsCommentModalOpen);
     };
 
-    const handlePostComment = () => {
-        // Adicionar lógica para postar o comentário
-        // Aqui você pode enviar o conteúdo do novo comentário para o servidor, etc.
-        // Por enquanto, apenas limpar o texto do novo comentário
-        setNewComment("");
-    };
-
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
-           <div className="relative">
-        <Nav />
-        <a href="/login"><button  className="absolute top-0 right-0 m-4 h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">
-          Login
-        </button></a>
-      </div>
+            <div className="relative">
+                <Nav />
+                <a href="/login"><button className="absolute top-0 right-0 m-4 h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">
+                    Login
+                </button></a>
+            </div>
             <div className="flex justify-center w-full mt-8">
                 <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
-                    <img className="py-1 px-1" src="setamaior.png" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
+                    {/* botão da seta leva para feed logado */}
+                    <button className="py-1 px-1" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px', border: 'none', position: 'relative' }}>
+                        <a href="/feed-logado"> <img src="setamaior.png" alt="Notificação" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></a>
+                    </button>
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
                         <div className="flex items-center">
                             <img src={user.avatar} className="w-20 h-20 rounded-full border-4 border-white" alt="Avatar" />
@@ -163,7 +153,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                     <hr className="border-gray-300 my-4" />
                     <div className="px-4">
@@ -194,11 +184,6 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: 'auto' }}
                                         >
-                                            <img
-                                                src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9cb257e39b468ffcefd3f773c1a5b86158583e3c"
-                                                alt="editar"
-                                                style={{ width: '24px', height: '24px' }}
-                                            />
                                         </button>
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: '8px' }}

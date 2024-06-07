@@ -20,10 +20,10 @@ interface User {
 }
 
 // infos do professor
-const user: User = { 
+const user: User = {
     name: "Morty Gamer",
     course: " Dept. Ciência da Computação",
-    materia: "Segurança Computacional, Estrutura de Dados, Viagem Interdimensional", 
+    materia: "Segurança Computacional, Estrutura de Dados, Viagem Interdimensional",
     avatar: "avatar-professor.png",
     posts: [
         {
@@ -31,7 +31,7 @@ const user: User = {
             category: "Rick. Viagem Interdimensional",
             content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
             comments: 1,
-            avatar:"avatar.png"
+            avatar: "avatar.png"
         },
         {
             date: "10/04/2024, às 11:12",
@@ -42,14 +42,14 @@ const user: User = {
         },
     ],
 };
-
+/* interface comentario */
 interface Comment {
     avatar: string;
     name: string;
     date: string;
     content: string;
 }
-
+/* criando os comentarios */
 const comments: Comment[] = [
     {
         avatar: "avatar-comentario.png",
@@ -64,14 +64,6 @@ const comments: Comment[] = [
         content: "Legal"
     },
 ];
-const newPost: Post = {
-    date: "20/06/2024",
-    category: "Outro Autor - Outro Tópico",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus nec massa fringilla, eget lobortis ipsum tempus. Aliquam euismod auctor ligula, ut lobortis tortor aliquet non. Nam nec metus quis ex tincidunt tempor sit amet sit amet lacus. Nullam auctor nec neque a rhoncus. Donec sed velit eget est commodo fermentum. Mauris non nunc eu libero consectetur pharetra. Donec ut sapien sit amet lorem eleifend accumsan. Vestibulum placerat lacus eget felis vestibulum, non vulputate metus ultrices.",
-    comments: 0,
-};
-
-const updatedPosts = [...user.posts, newPost];
 
 export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
@@ -134,29 +126,23 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         setIsCommentModalOpen(updatedIsCommentModalOpen);
     };
 
-    const handlePostComment = () => {
-        // Adicionar lógica para postar o comentário
-        // Aqui você pode enviar o conteúdo do novo comentário para o servidor, etc.
-        // Por enquanto, apenas limpar o texto do novo comentário
-        setNewComment("");
-    };
-
-
-
     return (
         <div className="bg-[#EDEDED] h-screen overflow-y-auto">
             {/* Estou puxando a nav e depois colocando o botão de login, dentro dela */}
             <div className="relative">
-        <Nav />
-        <a href="/login"><button  className="absolute top-0 right-0 m-4 h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">
-          Login
-        </button></a>
-      </div>
+                <Nav />
+                <a href="/login"><button className="absolute top-0 right-0 m-4 h-12 w-32 bg-[#00ABED] border-2 border-[#FFFFFF] rounded-xl text-xl drop-shadow-lg hover:bg-[#49a1be]">
+                    Login
+                </button></a>
+            </div>
             {/* as publicações do perfil */}
             <div className="flex justify-center w-full mt-8">
                 <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
-                    <img className="py-1 px-1" src="/setamaior.png" alt="Notificação" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px' }} />
-                    
+                    {/* botão da seta leva para feed logado */}
+                    <button className="py-1 px-1" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px', border: 'none', position: 'relative' }}>
+                        <a href="/feed-logado"> <img src="setamaior.png" alt="Notificação" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></a>
+                    </button>
+
                     {/* perfil do usuario */}
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
                         <div className="flex items-center">
@@ -175,7 +161,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                 </div>
                             </div>
                         </div>
-                      
+
                     </div>
 
                     {/* linhazinha da divisória */}
@@ -191,15 +177,15 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             {user.posts.map((post, index) => (
                                 <div key={index} className="bg-[#3EEE9A] p-4 rounded-lg">
                                     <div className="flex items-center">
-                                     <img src={post.avatar} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" />
-                                         <div className="ml-2">
+                                        <img src={post.avatar} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" />
+                                        <div className="ml-2">
                                             <h4 className="text-lg font-bold text-black">{user.name}</h4>
-                                                 <p className="text-sm text-gray-800 ">{post.date} · <span className="text-black-600 font-semibold">{post.category}</span></p>
+                                            <p className="text-sm text-gray-800 ">{post.date} · <span className="text-black-600 font-semibold">{post.category}</span></p>
                                         </div>
-                                </div>
+                                    </div>
                                     <p className="mt-4 text-gray-900">{post.content}</p>
                                     <div className="mt-2 flex items-center">
-                                    <button className="comment-button" onClick={() => toggleCommentModal(index)}>
+                                        <button className="comment-button" onClick={() => toggleCommentModal(index)}>
                                             <img
                                                 className="py-1 px-1"
                                                 src="/cometario.png"
@@ -211,11 +197,6 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: 'auto' }}
                                         >
-                                            <img
-                                                src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/9cb257e39b468ffcefd3f773c1a5b86158583e3c"
-                                                alt="Edit"
-                                                style={{ width: '24px', height: '24px' }}
-                                            />
                                         </button>
                                         <button
                                             style={{ background: 'none', border: 'none', padding: '0', cursor: 'pointer', marginLeft: '8px' }}
