@@ -72,7 +72,14 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [newPasswordError, setNewPasswordError] = useState('');
     const [confirmNewPasswordError, setConfirmNewPasswordError] = useState('');
     const [isCommentModalOpen, setIsCommentModalOpen] = useState(Array(user.posts.length).fill(false));
-    const [newComment, setNewComment] = useState("");
+    const [modalAberto2, setModalAberto2] = useState(false);
+    const openModal2 = () => {
+        setModalAberto2(true);
+    };
+
+    const closeModal2 = () => {
+        setModalAberto2(false);
+    };
     /*   verificando as senhas */
     const handleSave = () => {
         let isValid = true;
@@ -295,6 +302,8 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 <div className="flex items-center">
                                                     <img src={comments[index].avatar} alt="Avatar" className="w-20 h-20 rounded-full border-4 border-white" />
                                                     <div className="ml-4">
+                                                        {/* Aqui está o botão "Comentar" */}
+                                                        <button onClick={openModal2} className="bg-[#3EEE9A] hover:bg-[#FF7F7F] text-black font-bold py-4 px-14 rounded-full" style={{ marginLeft: '332px' }}>Comentar</button>
                                                         <h2 className="text-2xl font-bold text-black">{comments[index].name}</h2>
 
                                                         <div className="flex items-center">
@@ -311,6 +320,44 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                         </div>
 
                                                     </div>
+                                                    {/* Modal 2 */}
+                                                    {/* Botão de comentar */}
+                                                    {modalAberto2 && (
+                                                        <div className="sm:text-sm rounded-md" style={{
+                                                            position: 'fixed',
+                                                            top: '50px',
+                                                            left: '250px',
+                                                            width: '75%',
+                                                            height: '70%',
+                                                            backgroundColor: '#3EEE9A',
+                                                            zIndex: 9999,
+                                                            padding: '20px',
+                                                        }}>
+                                                            {/* Coloquei textarea para que a parte de baixo o usuario consiga digitar */}
+                                                            <textarea
+                                                                className="sm:text-sm rounded-md text-black"
+                                                                style={{ marginTop: '20px', height: '85%', background: '#A4FED3', width: '98%' }}
+                                                                placeholder="Escreva algo aqui..."
+                                                            ></textarea>
+                                                            {/* botões debaixo da tela de escrever */}
+                                                            <div style={{ alignItems: 'center' }}>
+                                                                <a href="/perfildoalunologado">
+                                                                    <input
+                                                                        className="sm:text-sm rounded-md"
+                                                                        type="button"
+                                                                        value="Cancelar"
+                                                                        style={{ width: '20%', background: '#3EEE9A', marginLeft: '55%', marginTop: '25px', height: '55px' }}
+                                                                    /></a>
+                                                                <a href="/perfildoalunologado">
+                                                                    <input
+                                                                        className="sm:text-sm rounded-md"
+                                                                        type="button"
+                                                                        value="Comentar"
+                                                                        style={{ width: '20%', height: '55px', background: '#A4FED3', marginLeft: 'auto', marginTop: '25px' }}
+                                                                    /></a>
+                                                            </div>
+                                                        </div>
+                                                    )}
                                                 </div>
 
                                             </div>
