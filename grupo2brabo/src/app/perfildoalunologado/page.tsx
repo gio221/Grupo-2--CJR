@@ -104,7 +104,18 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         } else {
             setConfirmNewPasswordError('');
         }
-
+        if (password === newPassword) {
+            setConfirmNewPasswordError("A nova senha não pode ser igual à senha atual.");
+            isValid = false;
+        } else {
+            setNewPasswordError('');
+        }
+        if ( newPassword  !==  confirmNewPassword) {
+            setConfirmNewPasswordError("A nova senha precisa ser igual a confirma nova senha");
+            isValid = false;
+        } else {
+            setNewPasswordError('');
+        }
         if (isValid) {
             closeModal();
         }
@@ -166,7 +177,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                 </div>
                             </div>
                         </div>
-                        {/* ordenação */}
+                        {/* editar */}
                         <div className="flex flex-col space-y-2">
                             <button className="bg-[#FFB6B6] hover:bg-[#FF7F7F] text-black font-bold py-2 px-4 rounded-full">Excluir Perfil</button>
                             {showModal && (
