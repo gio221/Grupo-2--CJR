@@ -15,7 +15,10 @@ const FeedLog = async ({ params }: { params: { userID: number } }) => {
 
   return (
     <>
+    <div
+    className="h-dvh bg-white"> 
       <FeedLogged logged={params.userID} profesores={professores} />
+      </div>
     </>
   );
 };

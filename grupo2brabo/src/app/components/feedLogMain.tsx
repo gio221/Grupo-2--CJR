@@ -165,7 +165,7 @@ const FeedLogged: React.FC<LoginMainProps> = ({ profesores, logged }) => {
         </a>
 
       </div>
-      <div className="bg-[#EDEDED]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
+      <div className="bg-[#FFFFFF]" style={{ width: '100%', height: 'auto', paddingBottom: '10px' }}>
         <div className="border-t-4 border-black ">
           {/* modal de editar perfil */}
           {showModal && (
