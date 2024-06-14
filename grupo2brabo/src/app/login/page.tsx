@@ -69,14 +69,8 @@ export default function Login(): JSX.Element {
                                 ); // Define mensagem de erro apropriada
                             }
                             else {
-                                console.log(email)
-                                console.log(password)
-                                const batata = await axios.post("http://localhost:3030/login", { email: email, password: password })
-                                console.log(batata.data)
-                                console.log(batata.status)
-                                if (batata.status == 200){
-                                    router.push("/feed-logado")
-                                }
+                                    router.push("/feed-logado/1")
+                                
                             }
                         }}
                     >
