@@ -1,14 +1,17 @@
 "use client";
 import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Login(): JSX.Element {
     // Define estados para email, senha e mensagens de erro
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const router = useRouter()
     // Função para lidar com a submissão do formulário
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); 
+        event.preventDefault();
         if (!email.includes("@")) { // Verifica se o email não contém o símbolo @
             setError("O email deve conter @.");
         } else if (password.length < 8) { // Verifica se a senha tem menos de 8 caracteres
@@ -54,23 +57,31 @@ export default function Login(): JSX.Element {
                 </form>
                 <div className="w-[32rem] h-24 flex justify-evenly items-center">
                     {/* Botão de entrar */}
-                    <a href="/feed-logado">
-                        <button
-                            className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness text-black"
-                            onClick={(e) => {
-                                if (!email.includes("@") || password.length < 8) {
-                                    e.preventDefault(); // Previne a navegação se o email ou senha forem inválidos
-                                    setError(
-                                        !email.includes("@")
-                                            ? "O email deve conter @."
-                                            : "A senha deve ter no mínimo 8 caracteres."
-                                    ); // Define mensagem de erro apropriada
+                    <button
+                        className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness text-black"
+                        onClick={async (e) => {
+                            if (!email.includes("@") || password.length < 8) {
+                                e.preventDefault(); // Previne a navegação se o email ou senha forem inválidos
+                                setError(
+                                    !email.includes("@")
+                                        ? "O email deve conter @."
+                                        : "A senha deve ter no mínimo 8 caracteres."
+                                ); // Define mensagem de erro apropriada
+                            }
+                            else {
+                                console.log(email)
+                                console.log(password)
+                                const batata = await axios.post("http://localhost:3030/login", { email: email, password: password })
+                                console.log(batata.data)
+                                console.log(batata.status)
+                                if (batata.status == 200){
+                                    router.push("/feed-logado")
                                 }
-                            }}
-                        >
-                            Entrar
-                        </button>
-                    </a>
+                            }
+                        }}
+                    >
+                        Entrar
+                    </button>
                     {/* Botão de criar conta */}
                     <a href="/cadastro">
                         <button className="bg-[#A4FED3] w-40 rounded-xl border-2 border-[#222E50] drop-shadow-lg text-lg h-12 btn-brightness text-black">Criar Conta</button>

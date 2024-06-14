@@ -1,72 +1,73 @@
 "use client";
 import React, { useState } from "react";
 import Nav from "../components/Nav";
+import { Professor } from "./interfacesPadrao";
 
-/* Declarando oque vai ter no post */
-interface Post {
-    date: string;
-    category: string;
-    content: string;
-    comments: number;
-    avatar: string;
-}
-/* declarando interface do usuario */
-interface User {
-    name: string;
-    course: string;
-    materia: string;
-    avatar: string;
-    posts: Post[];
-}
+interface Logado { prof: Professor, logged: number }
+const FeedLog: React.FC<Logado> = ({ prof, logged }) => {
+    /* Declarando oque vai ter no post */
+    interface Post {
+        date: string;
+        category: string;
+        content: string;
+        comments: number;
+        avatar: string;
+    }
+    /* declarando interface do usuario */
+    interface User {
+        name: string;
+        course: string;
+        materia: string;
+        avatar: string;
+        posts: Post[];
+    }
 
-// infos do professor
-const user: User = {
-    name: "Morty Gamer",
-    course: " Dept. Ciência da Computação",
-    materia: "Segurança Computacional, Estrutura de Dados, Viagem Interdimensional",
-    avatar: "avatar-professor.png",
-    posts: [
+    // infos do professor
+    const user: User = {
+        name: "Morty Gamer",
+        course: " Dept. Ciência da Computação",
+        materia: "Segurança Computacional, Estrutura de Dados, Viagem Interdimensional",
+        avatar: "/avatar-professor.png",
+        posts: [
+            {
+                date: "15/04/2024, às 21:42",
+                category: "Rick. Viagem Interdimensional",
+                content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+                comments: 1,
+                avatar: "/avatar.png"
+            },
+            {
+                date: "10/04/2024, às 11:12",
+                category: "Rick - Estrutura de Dados",
+                content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin",
+                comments: 1,
+                avatar: "/avatar-bart.png"
+            },
+        ],
+    };
+
+    interface Comment {
+        avatar: string;
+        name: string;
+        date: string;
+        content: string;
+    }
+
+    const comments: Comment[] = [
         {
-            date: "15/04/2024, às 21:42",
-            category: "Rick. Viagem Interdimensional",
-            content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
-            comments: 1,
-            avatar: "avatar.png"
+            avatar: "/avatar-comentario.png",
+            name: "Sans",
+            date: "18/06/2024 á 21:43",
+            content: "Muito Bom"
         },
         {
-            date: "10/04/2024, às 11:12",
-            category: "Rick - Estrutura de Dados",
-            content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin",
-            comments: 1,
-            avatar: "avatar-bart.png"
+            avatar: "/avatar-bart.png",
+            name: "El barto",
+            date: "19/06/2024 ás 10:20",
+            content: "Legal"
         },
-    ],
-};
+    ];
 
-interface Comment {
-    avatar: string;
-    name: string;
-    date: string;
-    content: string;
-}
-
-const comments: Comment[] = [
-    {
-        avatar: "avatar-comentario.png",
-        name: "Sans",
-        date: "18/06/2024 á 21:43",
-        content: "Muito Bom"
-    },
-    {
-        avatar: "avatar-bart.png",
-        name: "El barto",
-        date: "19/06/2024 ás 10:20",
-        content: "Legal"
-    },
-];
-
-
-export default function PerfilDoAlunoDeslogado(): JSX.Element {
     const [modalAberto2, setModalAberto2] = useState(false);
     const [modalAberto3, setModalAberto3] = useState(false);
     const [text, setText] = useState(""); // Estado para armazenar o texto digitado pelo usuário
@@ -125,7 +126,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         } else {
             setNewPasswordError('');
         }
-        if ( newPassword  !==  confirmNewPassword) {
+        if (newPassword !== confirmNewPassword) {
             setConfirmNewPasswordError("A nova senha precisa ser igual a confirma nova senha");
             isValid = false;
         } else {
@@ -163,7 +164,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                 <Nav />
 
                 <button onClick={openModal} style={{ position: 'absolute', top: '12px', right: '150px', border: 'none', background: 'none', cursor: 'pointer' }}>
-                    <img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/1d606de3cc4a464fe631e13f764212595cb2cc9d" alt="Logo UNB" style={{ width: '45px', height: '45px' }} />
+                    <img className="py-1 px-1" src="/LogoUnB.svg" alt="Logo UNB" style={{ width: '45px', height: '45px' }} />
                 </button>
                 <a href="/login"><button><img className="py-1 px-1" src="https://www.figma.com/file/rm3unqBZqA3aRyZ6uXIpGf/image/01a8d5d7c15093ace855e5e2965f92a9c7a6a5cc" alt="Logo UNB" style={{ width: '45px', height: '45px', marginLeft: '93%', position: 'absolute', top: '12px' }} /></button>
                 </a>
@@ -174,16 +175,16 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                 <div className="w-full max-w-3xl bg-white rounded-lg shadow-md">
                     {/* botão da seta leva para feed logado */}
                     <button className="py-1 px-1" style={{ width: '65px', height: '65px', marginLeft: '-80px', top: '8px', border: 'none', position: 'relative' }}>
-                        <a href="/feed-logado"> <img src="setamaior.png" alt="Notificação" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></a>
+                        <a href="/feed-logado/1"> <img src="/setamaior.png" alt="Notificação" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></a>
                     </button>
 
                     {/* perfil do usuario */}
                     <div className="bg-[#3EEE9A] p-4 rounded-t-lg flex items-center justify-between">
                         <div className="flex items-center">
-                            <img src={user.avatar} className="w-20 h-20 rounded-full border-4 border-white" alt="Avatar" />
+                            <img src={prof.foto} className="w-20 h-20 rounded-full border-4 border-white" alt="Avatar" />
                             <div className="ml-4">
-                                <h2 className="text-2xl font-bold text-black">{user.name}</h2>
-                                <p className="text-lg text-black">{user.course}</p>
+                                <h2 className="text-2xl font-bold text-black">{prof.name}</h2>
+                                <p className="text-lg text-black">{prof.departamento}</p>
                                 <div className="flex items-center">
                                     <img
                                         className="py-1 px-1"
@@ -348,7 +349,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                             <textarea
                                 className="sm:text-sm rounded-md text-black"
                                 style={{ marginTop: '20px', height: '65%', background: '#A4FED3', width: '98%' }}
-                                placeholder="Escreva algo aqui..."
+                                /*placeholder="Escreva algo aqui..."*/
                             ></textarea>
                             {/* botões debaixo da tela de escrever */}
                             <div style={{ alignItems: 'center' }}>
@@ -413,7 +414,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                 <div className="flex items-center">
                                                     <img src={comments[index].avatar} alt="Avatar" className="w-20 h-20 rounded-full border-4 border-white" />
                                                     <div className="ml-4">
-                                                        <button onClick={openModal2} className="bg-[#3EEE9A] hover:bg-[#FF7F7F] text-black font-bold py-4 px-14 rounded-full" style={{ marginLeft: '332px' }}>Comentar</button> 
+                                                        <button onClick={openModal2} className="bg-[#3EEE9A] hover:bg-[#FF7F7F] text-black font-bold py-4 px-14 rounded-full" style={{ marginLeft: '332px' }}>Comentar</button>
                                                         <h2 className="text-2xl font-bold text-black">{comments[index].name}</h2>
 
                                                         <div className="flex items-center">
@@ -448,7 +449,7 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
                                                             <textarea
                                                                 className="sm:text-sm rounded-md text-black"
                                                                 style={{ marginTop: '20px', height: '85%', background: '#A4FED3', width: '98%' }}
-                                                                placeholder="Escreva algo aqui..."
+                                                                /*placeholder="Escreva algo aqui..."*/
                                                             ></textarea>
                                                             {/* botões debaixo da tela de escrever */}
                                                             <div style={{ alignItems: 'center' }}>
@@ -490,3 +491,5 @@ export default function PerfilDoAlunoDeslogado(): JSX.Element {
         </div>
     );
 }
+export default FeedLog
+
